@@ -10,14 +10,14 @@ final class AppContainer {
     let crashReporter: CrashReporter
 
     init(
-        httpClient: HTTPClient = URLSessionHTTPClient(),
+        httpClient: HTTPClient? = nil,
         rateLimiter: RateLimiter = RateLimiter(),
         coreDataStack: CoreDataStack = CoreDataStack(),
         analytics: AnalyticsService = NoOpAnalytics(),
         crashReporter: CrashReporter = NoOpCrashReporter()
     ) {
-        self.httpClient = httpClient
         self.rateLimiter = rateLimiter
+        self.httpClient = httpClient ?? RateLimitedHTTPClient(inner: URLSessionHTTPClient(), limiter: rateLimiter)
         self.coreDataStack = coreDataStack
         self.analytics = analytics
         self.crashReporter = crashReporter
