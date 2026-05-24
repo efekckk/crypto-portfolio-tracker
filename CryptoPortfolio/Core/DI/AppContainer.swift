@@ -25,7 +25,10 @@ final class AppContainer {
 }
 
 private struct AppContainerKey: EnvironmentKey {
-    static let defaultValue = AppContainer()
+    /// Only used by SwiftUI previews / views without an injected container.
+    /// Uses an in-memory store so previews never touch the on-disk database.
+    /// Production injects its own container via `@State` in `CryptoPortfolioApp`.
+    static let defaultValue = AppContainer(coreDataStack: CoreDataStack(inMemory: true))
 }
 
 extension EnvironmentValues {
