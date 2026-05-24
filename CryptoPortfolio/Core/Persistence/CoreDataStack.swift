@@ -2,7 +2,7 @@ import CoreData
 
 /// Wraps NSPersistentContainer. `inMemory` gives an isolated store for tests.
 final class CoreDataStack {
-    let container: NSPersistentContainer
+    private(set) var container: NSPersistentContainer
 
     init(inMemory: Bool = false, modelName: String = "CryptoPortfolio") {
         container = NSPersistentContainer(name: modelName)
