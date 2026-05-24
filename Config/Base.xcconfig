@@ -1,0 +1,3 @@
+// Base build settings shared by Debug and Release.
+// Optionally pulls in a local, gitignored Secrets.xcconfig (see Secrets.xcconfig.example).
+#include? "Secrets.xcconfig"

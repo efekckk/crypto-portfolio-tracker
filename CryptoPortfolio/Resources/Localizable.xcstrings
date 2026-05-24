@@ -1,0 +1,30 @@
+{
+  "sourceLanguage" : "tr",
+  "strings" : {
+    "tab.alerts" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Alerts" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Alarmlar" } }
+      }
+    },
+    "tab.portfolio" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Portfolio" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Portföy" } }
+      }
+    },
+    "tab.watchlist" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Watchlist" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İzleme" } }
+      }
+    },
+    "common.comingSoon" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Coming soon" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Yakında" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDisplayName</key>
+    <string>Crypto Portfolio</string>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>tr</string>
+    <key>CFBundleLocalizations</key>
+    <array>
+        <string>tr</string>
+        <string>en</string>
+    </array>
+    <key>COINGECKO_API_KEY</key>
+    <string>$(COINGECKO_API_KEY)</string>
+    <key>NSCameraUsageDescription</key>
+    <string>QR kodu taramak için kameraya erişim gerekir.</string>
+    <key>UILaunchScreen</key>
+    <dict/>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+</dict>
+</plist>
