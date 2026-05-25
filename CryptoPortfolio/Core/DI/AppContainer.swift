@@ -22,6 +22,28 @@ final class AppContainer {
         self.analytics = analytics
         self.crashReporter = crashReporter
     }
+    // MARK: - Repositories (lazy, share the container's infrastructure)
+
+    private(set) lazy var coinRepository: CoinRepository = CoinRepositoryImpl(httpClient: httpClient)
+    private(set) lazy var portfolioRepository: PortfolioRepository = PortfolioRepositoryImpl(stack: coreDataStack)
+
+    // MARK: - Use case factories
+
+    func makeSearchCoinsUseCase() -> SearchCoinsUseCase {
+        SearchCoinsUseCase(coinRepository: coinRepository)
+    }
+
+    func makeAddHoldingUseCase() -> AddHoldingUseCase {
+        AddHoldingUseCase(portfolioRepository: portfolioRepository)
+    }
+
+    func makeRemoveHoldingUseCase() -> RemoveHoldingUseCase {
+        RemoveHoldingUseCase(portfolioRepository: portfolioRepository)
+    }
+
+    func makeGetPortfolioSummaryUseCase() -> GetPortfolioSummaryUseCase {
+        GetPortfolioSummaryUseCase(portfolioRepository: portfolioRepository, coinRepository: coinRepository)
+    }
 }
 
 private struct AppContainerKey: EnvironmentKey {
