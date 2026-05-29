@@ -30,6 +30,42 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Retry" } },
         "tr" : { "stringUnit" : { "state" : "translated", "value" : "Tekrar dene" } }
       }
+    },
+    "portfolio.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Portfolio" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Portföy" } }
+      }
+    },
+    "portfolio.totalValue" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Total value" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Toplam değer" } }
+      }
+    },
+    "portfolio.empty.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No holdings yet" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Henüz coin yok" } }
+      }
+    },
+    "portfolio.empty.message" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tap + to add your first coin and start tracking your portfolio." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "+ ile ilk coin'ini ekle ve portföyünü takibe başla." } }
+      }
+    },
+    "portfolio.holdings.section" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Holdings" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Varlıklar" } }
+      }
+    },
+    "portfolio.addCoin.accessibility" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add coin" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin ekle" } }
+      }
     }
   },
   "version" : "1.0"
