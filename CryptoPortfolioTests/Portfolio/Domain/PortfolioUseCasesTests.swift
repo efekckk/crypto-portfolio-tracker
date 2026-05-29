@@ -6,14 +6,17 @@ import XCTest
 final class MockCoinRepository: CoinRepository {
     var searchResult: [Coin] = []
     var marketsResult: [Coin] = []
+    var errorToThrow: Error?
     private(set) var lastSearchQuery: String?
 
     func searchCoins(query: String) async throws -> [Coin] {
         lastSearchQuery = query
+        if let errorToThrow { throw errorToThrow }
         return searchResult
     }
     func markets(ids: [String], currency: Currency) async throws -> [Coin] {
-        marketsResult
+        if let errorToThrow { throw errorToThrow }
+        return marketsResult
     }
 }
 
