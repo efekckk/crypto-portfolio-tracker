@@ -45,4 +45,9 @@ final class AddCoinViewModel: ObservableObject {
             return false
         }
     }
+
+    /// Clears any previously set save error (e.g. when the user navigates to a fresh form).
+    func clearSaveError() {
+        saveError = nil
+    }
 }

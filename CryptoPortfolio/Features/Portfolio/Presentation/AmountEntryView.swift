@@ -39,6 +39,7 @@ struct AmountEntryView: View {
                     .disabled(viewModel.isSaving || !canSave)
             }
         }
+        .onAppear { viewModel.clearSaveError() }
     }
 
     private var canSave: Bool {

@@ -66,4 +66,14 @@ final class AddCoinViewModelTests: XCTestCase {
         XCTAssertFalse(saved)
         XCTAssertNotNil(sut.saveError)
     }
+
+    func test_clearSaveError_resetsSaveErrorToNil() async {
+        let (sut, _, _) = makeSUT()
+        _ = await sut.add(coinId: "bitcoin", amount: 0, buyPrice: 100) // triggers .invalidAmount → sets saveError
+        XCTAssertNotNil(sut.saveError, "Precondition: save error should be set after invalid add")
+
+        sut.clearSaveError()
+
+        XCTAssertNil(sut.saveError)
+    }
 }
