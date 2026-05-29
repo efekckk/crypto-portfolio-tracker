@@ -1,10 +1,15 @@
 import SwiftUI
 
 struct RootView: View {
+    @Environment(\.appContainer) private var container
+
     var body: some View {
         TabView {
-            PlaceholderTab(titleKey: "tab.portfolio", systemImage: "chart.pie.fill")
-                .tabItem { Label("tab.portfolio", systemImage: "chart.pie.fill") }
+            PortfolioView(
+                getSummary: container.makeGetPortfolioSummaryUseCase(),
+                removeHolding: container.makeRemoveHoldingUseCase()
+            )
+            .tabItem { Label("tab.portfolio", systemImage: "chart.pie.fill") }
 
             PlaceholderTab(titleKey: "tab.watchlist", systemImage: "star.fill")
                 .tabItem { Label("tab.watchlist", systemImage: "star.fill") }
