@@ -24,6 +24,12 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Coming soon" } },
         "tr" : { "stringUnit" : { "state" : "translated", "value" : "Yakında" } }
       }
+    },
+    "common.retry" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Retry" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Tekrar dene" } }
+      }
     }
   },
   "version" : "1.0"
