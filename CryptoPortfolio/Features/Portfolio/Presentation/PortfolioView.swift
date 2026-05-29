@@ -2,6 +2,7 @@ import SwiftUI
 
 struct PortfolioView: View {
     @StateObject private var viewModel: PortfolioViewModel
+    @Environment(\.appContainer) private var container
     @State private var isShowingAddCoin = false
 
     init(getSummary: GetPortfolioSummaryUseCase,
@@ -19,6 +20,7 @@ struct PortfolioView: View {
                 .toolbar { trailingToolbar }
                 .refreshable { await viewModel.refresh() }
                 .task { await viewModel.load() }
+                .sheet(isPresented: $isShowingAddCoin) { addCoinSheet }
         }
     }
 
@@ -64,5 +66,16 @@ struct PortfolioView: View {
             }
         }
         .listStyle(.insetGrouped)
+    }
+
+    @ViewBuilder
+    private var addCoinSheet: some View {
+        AddCoinView(
+            searchCoins: container.makeSearchCoinsUseCase(),
+            addHolding: container.makeAddHoldingUseCase()
+        ) { saved in
+            isShowingAddCoin = false
+            if saved { Task { await viewModel.load() } }
+        }
     }
 }

@@ -66,6 +66,72 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Add coin" } },
         "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin ekle" } }
       }
+    },
+    "addCoin.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add coin" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin ekle" } }
+      }
+    },
+    "addCoin.search.prompt" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search a coin" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin ara" } }
+      }
+    },
+    "addCoin.empty.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search to add a coin" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin eklemek için ara" } }
+      }
+    },
+    "addCoin.empty.message" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Type a coin name or symbol and press Search." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin adı veya sembolü yazıp Ara'ya bas." } }
+      }
+    },
+    "addCoin.amount.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Amount" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Miktar" } }
+      }
+    },
+    "addCoin.amount.label" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Amount" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Miktar" } }
+      }
+    },
+    "addCoin.amount.placeholder" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "0.00" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "0,00" } }
+      }
+    },
+    "addCoin.buyPrice.label" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Buy price" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Alış fiyatı" } }
+      }
+    },
+    "addCoin.buyPrice.placeholder" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "0.00" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "0,00" } }
+      }
+    },
+    "addCoin.save" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Save" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Kaydet" } }
+      }
+    },
+    "common.cancel" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cancel" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İptal" } }
+      }
     }
   },
   "version" : "1.0"
