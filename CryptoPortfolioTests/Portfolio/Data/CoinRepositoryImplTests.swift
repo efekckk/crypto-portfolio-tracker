@@ -78,4 +78,21 @@ final class CoinRepositoryImplTests: XCTestCase {
             XCTFail("Expected APIError, got \(error)")
         }
     }
+
+    func test_chart_mapsResponseToChartPoints() async throws {
+        let stub = StubHTTPClient()
+        stub.responses = [
+            MarketChartDTO(prices: [
+                [1_700_000_000_000, 50_000],
+                [1_700_003_600_000, 50_250]
+            ])
+        ]
+        let sut = CoinRepositoryImpl(httpClient: stub)
+
+        let points = try await sut.chart(coinId: "bitcoin", range: .d7, currency: .usd)
+
+        XCTAssertEqual(points.count, 2)
+        XCTAssertEqual(points.first?.price, 50_000)
+        XCTAssertEqual(stub.sentEndpoints.first?.path, "coins/bitcoin/market_chart")
+    }
 }

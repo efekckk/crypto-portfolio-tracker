@@ -24,4 +24,12 @@ final class CoinRepositoryImpl: CoinRepository {
         )
         return dtos.map(CoinMapper.map)
     }
+
+    func chart(coinId: String, range: PriceRange, currency: Currency) async throws -> [ChartPoint] {
+        let dto: MarketChartDTO = try await httpClient.send(
+            CoinGeckoEndpoints.marketChart(coinId: coinId, vsCurrency: currency.code, days: range.coinGeckoDays),
+            as: MarketChartDTO.self
+        )
+        return ChartPointMapper.map(dto)
+    }
 }

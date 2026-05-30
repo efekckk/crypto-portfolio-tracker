@@ -4,4 +4,5 @@ import Foundation
 protocol CoinRepository {
     func searchCoins(query: String) async throws -> [Coin]
     func markets(ids: [String], currency: Currency) async throws -> [Coin]
+    func chart(coinId: String, range: PriceRange, currency: Currency) async throws -> [ChartPoint]
 }

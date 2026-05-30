@@ -18,6 +18,15 @@ final class MockCoinRepository: CoinRepository {
         if let errorToThrow { throw errorToThrow }
         return marketsResult
     }
+
+    var chartResult: [ChartPoint] = []
+    private(set) var lastChartRequest: (coinId: String, range: PriceRange, currency: Currency)?
+
+    func chart(coinId: String, range: PriceRange, currency: Currency) async throws -> [ChartPoint] {
+        lastChartRequest = (coinId, range, currency)
+        if let errorToThrow { throw errorToThrow }
+        return chartResult
+    }
 }
 
 final class MockPortfolioRepository: PortfolioRepository {
