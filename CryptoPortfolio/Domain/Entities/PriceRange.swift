@@ -1,6 +1,7 @@
 import Foundation
 
 /// Chart time ranges offered in CoinDetail, with the CoinGecko `days` parameter.
+/// Display labels live in the presentation layer (`PriceRange+Display.swift`).
 enum PriceRange: String, CaseIterable, Identifiable {
     case h24
     case d7
@@ -16,16 +17,6 @@ enum PriceRange: String, CaseIterable, Identifiable {
         case .d7: return "7"
         case .d30: return "30"
         case .y1: return "365"
-        }
-    }
-
-    /// Short label for the segmented selector.
-    var displayLabel: String {
-        switch self {
-        case .h24: return "24s"
-        case .d7: return "7g"
-        case .d30: return "30g"
-        case .y1: return "1y"
         }
     }
 }
