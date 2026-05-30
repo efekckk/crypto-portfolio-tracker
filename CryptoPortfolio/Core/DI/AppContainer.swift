@@ -44,6 +44,14 @@ final class AppContainer {
     func makeGetPortfolioSummaryUseCase() -> GetPortfolioSummaryUseCase {
         GetPortfolioSummaryUseCase(portfolioRepository: portfolioRepository, coinRepository: coinRepository)
     }
+
+    func makeGetCoinChartUseCase() -> GetCoinChartUseCase {
+        GetCoinChartUseCase(coinRepository: coinRepository)
+    }
+
+    func makeGetCoinMarketUseCase() -> GetCoinMarketUseCase {
+        GetCoinMarketUseCase(coinRepository: coinRepository)
+    }
 }
 
 private struct AppContainerKey: EnvironmentKey {

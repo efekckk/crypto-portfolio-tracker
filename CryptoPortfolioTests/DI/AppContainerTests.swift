@@ -20,4 +20,14 @@ final class AppContainerTests: XCTestCase {
         let summary = try await container.makeGetPortfolioSummaryUseCase()(currency: .usd)
         XCTAssertEqual(summary, .empty)
     }
+
+    func test_buildsCoinDetailUseCases() throws {
+        let container = makeSUT()
+        let chart = container.makeGetCoinChartUseCase()
+        let market = container.makeGetCoinMarketUseCase()
+        XCTAssertNotNil(chart)
+        XCTAssertNotNil(market)
+        _ = chart
+        _ = market
+    }
 }
