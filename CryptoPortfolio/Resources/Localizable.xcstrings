@@ -132,6 +132,66 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Cancel" } },
         "tr" : { "stringUnit" : { "state" : "translated", "value" : "İptal" } }
       }
+    },
+    "priceRange.label" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Range" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Aralık" } }
+      }
+    },
+    "priceRange.h24" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "24H" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "24S" } }
+      }
+    },
+    "priceRange.d7" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "7D" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "7G" } }
+      }
+    },
+    "priceRange.d30" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "30D" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "30G" } }
+      }
+    },
+    "priceRange.y1" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "1Y" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "1Y" } }
+      }
+    },
+    "coinDetail.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Details" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Detay" } }
+      }
+    },
+    "coinDetail.stats.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Stats" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İstatistikler" } }
+      }
+    },
+    "coinDetail.stats.marketCap" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Market cap" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Piyasa değeri" } }
+      }
+    },
+    "coinDetail.stats.high24h" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "24h high" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "24s yüksek" } }
+      }
+    },
+    "coinDetail.stats.low24h" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "24h low" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "24s düşük" } }
+      }
     }
   },
   "version" : "1.0"
