@@ -9,7 +9,10 @@ enum CoinMapper {
             name: dto.name,
             imageURL: dto.image.flatMap(URL.init(string:)),
             currentPrice: dto.currentPrice ?? 0,
-            priceChangePercentage24h: dto.priceChangePercentage24h ?? 0
+            priceChangePercentage24h: dto.priceChangePercentage24h ?? 0,
+            marketCap: dto.marketCap,
+            high24h: dto.high24h,
+            low24h: dto.low24h
         )
     }
 

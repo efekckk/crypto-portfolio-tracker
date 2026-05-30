@@ -55,4 +55,23 @@ final class CoinDTOTests: XCTestCase {
         XCTAssertEqual(response.coins[0].symbol, "ETH")
         XCTAssertEqual(response.coins[0].large, "https://example.com/eth-large.png")
     }
+
+    func test_decodesCoinMarketDTOWithStatsFields() throws {
+        let json = """
+        [{
+          "id": "bitcoin", "symbol": "btc", "name": "Bitcoin",
+          "current_price": 50000,
+          "price_change_percentage_24h": 1.0,
+          "market_cap": 950000000000,
+          "high_24h": 51000,
+          "low_24h": 49000
+        }]
+        """.data(using: .utf8)!
+
+        let dtos = try JSONDecoder().decode([CoinMarketDTO].self, from: json)
+
+        XCTAssertEqual(dtos[0].marketCap, 950_000_000_000)
+        XCTAssertEqual(dtos[0].high24h, 51_000)
+        XCTAssertEqual(dtos[0].low24h, 49_000)
+    }
 }

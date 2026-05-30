@@ -41,4 +41,18 @@ final class CoinMapperTests: XCTestCase {
         XCTAssertEqual(coin.imageURL, URL(string: "https://example.com/large.png"))
         XCTAssertEqual(coin.currentPrice, 0, "Search results carry no price")
     }
+
+    func test_mapsMarketDTOStatsFields() {
+        let dto = CoinMarketDTO(
+            id: "bitcoin", symbol: "btc", name: "Bitcoin",
+            image: nil, currentPrice: 50000, priceChangePercentage24h: 1.0,
+            marketCap: 950_000_000_000, high24h: 51_000, low24h: 49_000
+        )
+
+        let coin = CoinMapper.map(dto)
+
+        XCTAssertEqual(coin.marketCap, 950_000_000_000)
+        XCTAssertEqual(coin.high24h, 51_000)
+        XCTAssertEqual(coin.low24h, 49_000)
+    }
 }

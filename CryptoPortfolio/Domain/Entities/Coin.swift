@@ -1,13 +1,17 @@
 import Foundation
 
-/// A tradable coin with its latest market snapshot.
+/// A tradable coin with its latest market snapshot. Stats fields are optional
+/// because not every code path needs them (search results carry no price/stats).
 struct Coin: Identifiable, Equatable {
-    let id: String          // CoinGecko id, e.g. "bitcoin"
-    let symbol: String      // e.g. "btc"
-    let name: String        // e.g. "Bitcoin"
+    let id: String
+    let symbol: String
+    let name: String
     let imageURL: URL?
     let currentPrice: Double
     let priceChangePercentage24h: Double
+    let marketCap: Double?
+    let high24h: Double?
+    let low24h: Double?
 
     init(
         id: String,
@@ -15,7 +19,10 @@ struct Coin: Identifiable, Equatable {
         name: String,
         imageURL: URL? = nil,
         currentPrice: Double = 0,
-        priceChangePercentage24h: Double = 0
+        priceChangePercentage24h: Double = 0,
+        marketCap: Double? = nil,
+        high24h: Double? = nil,
+        low24h: Double? = nil
     ) {
         self.id = id
         self.symbol = symbol
@@ -23,5 +30,8 @@ struct Coin: Identifiable, Equatable {
         self.imageURL = imageURL
         self.currentPrice = currentPrice
         self.priceChangePercentage24h = priceChangePercentage24h
+        self.marketCap = marketCap
+        self.high24h = high24h
+        self.low24h = low24h
     }
 }
