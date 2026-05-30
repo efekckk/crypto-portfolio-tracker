@@ -57,7 +57,17 @@ struct PortfolioView: View {
             Section { PortfolioSummaryHeader(summary: summary, currency: viewModel.currency) }
             Section("portfolio.holdings.section") {
                 ForEach(summary.items) { item in
-                    HoldingRow(valuation: item, currency: viewModel.currency)
+                    NavigationLink {
+                        CoinDetailView(
+                            coinId: item.holding.coinId,
+                            coinName: item.coin?.name ?? item.holding.coinId.capitalized,
+                            currency: viewModel.currency,
+                            getCoinMarket: container.makeGetCoinMarketUseCase(),
+                            getCoinChart: container.makeGetCoinChartUseCase()
+                        )
+                    } label: {
+                        HoldingRow(valuation: item, currency: viewModel.currency)
+                    }
                 }
                 .onDelete { indices in
                     let ids = indices.map { summary.items[$0].holding.coinId }
