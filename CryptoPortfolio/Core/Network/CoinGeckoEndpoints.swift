@@ -15,4 +15,11 @@ enum CoinGeckoEndpoints {
             URLQueryItem(name: "query", value: query)
         ])
     }
+
+    static func marketChart(coinId: String, vsCurrency: String, days: String) -> Endpoint {
+        Endpoint(path: "coins/\(coinId)/market_chart", queryItems: [
+            URLQueryItem(name: "vs_currency", value: vsCurrency),
+            URLQueryItem(name: "days", value: days)
+        ])
+    }
 }
