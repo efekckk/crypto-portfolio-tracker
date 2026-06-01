@@ -246,6 +246,54 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Type a coin name or symbol and press Search." } },
         "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin adı veya sembolü yazıp Ara'ya bas." } }
       }
+    },
+    "alerts.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Alerts" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Alarmlar" } }
+      }
+    },
+    "alerts.empty.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No price alerts" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Fiyat alarmı yok" } }
+      }
+    },
+    "alerts.empty.message" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tap + to create your first price alert." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "+ ile ilk fiyat alarmını oluştur." } }
+      }
+    },
+    "alerts.create.accessibility" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Create alert" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Alarm oluştur" } }
+      }
+    },
+    "alerts.direction.above" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Above" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Üstünde" } }
+      }
+    },
+    "alerts.direction.below" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Below" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Altında" } }
+      }
+    },
+    "alerts.fired" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fired" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Tetiklendi" } }
+      }
+    },
+    "common.delete" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Sil" } }
+      }
     }
   },
   "version" : "1.0"
