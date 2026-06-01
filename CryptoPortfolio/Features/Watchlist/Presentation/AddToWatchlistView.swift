@@ -2,9 +2,10 @@ import SwiftUI
 
 struct AddToWatchlistView: View {
     @StateObject private var viewModel: AddToWatchlistViewModel
-    let onDone: () -> Void
+    let onDone: (_ didChange: Bool) -> Void
+    @State private var didChange = false
 
-    init(container: AppContainer, onDone: @escaping () -> Void) {
+    init(container: AppContainer, onDone: @escaping (Bool) -> Void) {
         _viewModel = StateObject(wrappedValue: AddToWatchlistViewModel(
             searchCoins: container.makeSearchCoinsUseCase(),
             toggleWatchlist: container.makeToggleWatchlistUseCase(),
@@ -22,7 +23,7 @@ struct AddToWatchlistView: View {
                 .onSubmit(of: .search) { Task { await viewModel.search() } }
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
-                        Button("common.cancel") { onDone() }
+                        Button("common.cancel") { onDone(didChange) }
                     }
                 }
                 .task { await viewModel.refreshWatchedIds() }
@@ -45,7 +46,10 @@ struct AddToWatchlistView: View {
         case .loaded(let coins):
             List(coins) { coin in
                 Button {
-                    Task { await viewModel.toggle(coinId: coin.id) }
+                    Task {
+                        await viewModel.toggle(coinId: coin.id)
+                        didChange = true
+                    }
                 } label: {
                     AddToWatchlistRow(coin: coin, isWatched: viewModel.isWatched(coinId: coin.id))
                 }

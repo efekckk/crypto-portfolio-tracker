@@ -22,9 +22,9 @@ struct WatchlistView: View {
                 .refreshable { await viewModel.refresh() }
                 .task { await viewModel.load() }
                 .sheet(isPresented: $isShowingAddSheet) {
-                    AddToWatchlistView(container: container) {
+                    AddToWatchlistView(container: container) { didChange in
                         isShowingAddSheet = false
-                        Task { await viewModel.load() }
+                        if didChange { Task { await viewModel.load() } }
                     }
                 }
         }
