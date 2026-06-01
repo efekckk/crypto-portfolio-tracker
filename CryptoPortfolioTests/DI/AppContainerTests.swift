@@ -3,7 +3,7 @@ import XCTest
 
 final class AppContainerTests: XCTestCase {
     private func makeSUT() -> AppContainer {
-        AppContainer(coreDataStack: CoreDataStack(inMemory: true))
+        AppContainer(coreDataStack: CoreDataStack(inMemory: true), notifications: NoOpNotificationService())
     }
 
     func test_buildsPortfolioUseCases() throws {

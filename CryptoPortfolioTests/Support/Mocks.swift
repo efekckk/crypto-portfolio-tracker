@@ -87,3 +87,19 @@ final class MockAlertRepository: AlertRepository {
         storage[id] = nil
     }
 }
+
+// MARK: - Notifications
+
+final class SpyNotificationService: NotificationService {
+    var authorizationResult: Bool = true
+    private(set) var authorizationCalls: Int = 0
+    private(set) var firings: [(title: String, body: String, identifier: String)] = []
+
+    func requestAuthorizationIfNeeded() async -> Bool {
+        authorizationCalls += 1
+        return authorizationResult
+    }
+    func fire(title: String, body: String, identifier: String) async {
+        firings.append((title, body, identifier))
+    }
+}

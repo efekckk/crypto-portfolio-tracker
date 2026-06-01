@@ -8,23 +8,26 @@ final class AppContainer {
     let coreDataStack: CoreDataStack
     let analytics: AnalyticsService
     let crashReporter: CrashReporter
+    let notifications: NotificationService
 
     init(
         httpClient: HTTPClient? = nil,
         rateLimiter: RateLimiter = RateLimiter(),
         coreDataStack: CoreDataStack = CoreDataStack(),
         analytics: AnalyticsService = NoOpAnalytics(),
-        crashReporter: CrashReporter = NoOpCrashReporter()
+        crashReporter: CrashReporter = NoOpCrashReporter(),
+        notifications: NotificationService = UserNotificationsService()
     ) {
         self.rateLimiter = rateLimiter
         self.httpClient = httpClient ?? RateLimitedHTTPClient(inner: URLSessionHTTPClient(), limiter: rateLimiter)
         self.coreDataStack = coreDataStack
         self.analytics = analytics
         self.crashReporter = crashReporter
+        self.notifications = notifications
     }
     // MARK: - Repositories (lazy, share the container's infrastructure)
 
-    private(set) lazy var coinRepository: CoinRepository = CoinRepositoryImpl(httpClient: httpClient)
+    internal(set) lazy var coinRepository: CoinRepository = CoinRepositoryImpl(httpClient: httpClient)
     private(set) lazy var portfolioRepository: PortfolioRepository = PortfolioRepositoryImpl(stack: coreDataStack)
     private(set) lazy var watchlistRepository: WatchlistRepository = WatchlistRepositoryImpl(stack: coreDataStack)
     private(set) lazy var alertRepository: AlertRepository = AlertRepositoryImpl(stack: coreDataStack)
@@ -81,6 +84,24 @@ final class AppContainer {
 
     func makeEvaluateAlertsUseCase(currency: Currency = .default) -> EvaluateAlertsUseCase {
         EvaluateAlertsUseCase(alertRepository: alertRepository, coinRepository: coinRepository, currency: currency)
+    }
+
+    @MainActor
+    @discardableResult
+    func evaluateAndNotify(currency: Currency = .default) async -> Int {
+        do {
+            let firings = try await makeEvaluateAlertsUseCase(currency: currency)(now: Date())
+            for firing in firings {
+                await notifications.fire(
+                    title: "Price alert",
+                    body: "\(firing.alert.coinId.capitalized) crossed \(firing.alert.targetPrice)",
+                    identifier: firing.alert.id.uuidString
+                )
+            }
+            return firings.count
+        } catch {
+            return 0
+        }
     }
 }
 
