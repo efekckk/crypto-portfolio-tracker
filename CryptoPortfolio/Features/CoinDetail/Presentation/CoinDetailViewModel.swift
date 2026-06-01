@@ -11,6 +11,7 @@ final class CoinDetailViewModel: ObservableObject {
 
     private let getCoinMarket: GetCoinMarketUseCase
     private let getCoinChart: GetCoinChartUseCase
+    private var chartTask: Task<Void, Never>?
 
     init(coinId: String,
          currency: Currency,
@@ -53,6 +54,11 @@ final class CoinDetailViewModel: ObservableObject {
 
     func changeRange(to range: PriceRange) async {
         selectedRange = range
-        await loadChart()
+        chartTask?.cancel()
+        let task = Task<Void, Never> { [weak self] in
+            await self?.loadChart()
+        }
+        chartTask = task
+        await task.value
     }
 }

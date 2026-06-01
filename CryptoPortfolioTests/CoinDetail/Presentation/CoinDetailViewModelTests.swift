@@ -70,4 +70,27 @@ final class CoinDetailViewModelTests: XCTestCase {
             XCTFail("Expected chart .loaded after range change")
         }
     }
+
+    func test_changeRange_cancelsPreviousChartTask_andOnlyAppliesLatest() async {
+        let coin = Coin(id: "bitcoin", symbol: "btc", name: "Bitcoin", currentPrice: 50_000)
+        let firstPoints = [ChartPoint(id: 1, date: Date(timeIntervalSince1970: 0), price: 100)]
+        let secondPoints = [ChartPoint(id: 2, date: Date(timeIntervalSince1970: 60), price: 200)]
+        let (sut, repo) = makeSUT(coin: coin, points: firstPoints)
+        await sut.loadAll()
+
+        // Trigger rapid range switches. Each `await` allows the task to run.
+        repo.chartResult = firstPoints
+        async let r1: Void = sut.changeRange(to: .d7)
+        repo.chartResult = secondPoints
+        async let r2: Void = sut.changeRange(to: .d30)
+        _ = await (r1, r2)
+
+        // Whatever ran last must win.
+        XCTAssertEqual(sut.selectedRange, .d30)
+        if case .loaded(let pts) = sut.chartState {
+            XCTAssertEqual(pts.first?.price, 200, "Latest range request must apply")
+        } else {
+            XCTFail("Expected chart .loaded after final range change")
+        }
+    }
 }
