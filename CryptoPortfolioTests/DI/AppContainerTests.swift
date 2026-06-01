@@ -30,4 +30,12 @@ final class AppContainerTests: XCTestCase {
         _ = chart
         _ = market
     }
+
+    func test_buildsWatchlistUseCases() throws {
+        let container = makeSUT()
+        let get = container.makeGetWatchlistUseCase()
+        let toggle = container.makeToggleWatchlistUseCase()
+        XCTAssertNotNil(get); XCTAssertNotNil(toggle)
+        _ = get; _ = toggle
+    }
 }

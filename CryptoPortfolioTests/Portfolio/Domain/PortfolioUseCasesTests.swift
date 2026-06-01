@@ -29,6 +29,30 @@ final class MockCoinRepository: CoinRepository {
     }
 }
 
+final class MockWatchlistRepository: WatchlistRepository {
+    var storage: [String: WatchItem] = [:]
+    var errorToThrow: Error?
+
+    func items() throws -> [WatchItem] {
+        if let errorToThrow { throw errorToThrow }
+        return storage.values.sorted { $0.addedAt < $1.addedAt }
+    }
+    func isWatched(coinId: String) throws -> Bool {
+        if let errorToThrow { throw errorToThrow }
+        return storage[coinId] != nil
+    }
+    func add(coinId: String) throws {
+        if let errorToThrow { throw errorToThrow }
+        if storage[coinId] == nil {
+            storage[coinId] = WatchItem(coinId: coinId)
+        }
+    }
+    func remove(coinId: String) throws {
+        if let errorToThrow { throw errorToThrow }
+        storage[coinId] = nil
+    }
+}
+
 final class MockPortfolioRepository: PortfolioRepository {
     var storage: [String: Holding] = [:]
 

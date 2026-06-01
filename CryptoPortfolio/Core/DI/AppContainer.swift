@@ -26,6 +26,7 @@ final class AppContainer {
 
     private(set) lazy var coinRepository: CoinRepository = CoinRepositoryImpl(httpClient: httpClient)
     private(set) lazy var portfolioRepository: PortfolioRepository = PortfolioRepositoryImpl(stack: coreDataStack)
+    private(set) lazy var watchlistRepository: WatchlistRepository = WatchlistRepositoryImpl(stack: coreDataStack)
 
     // MARK: - Use case factories
 
@@ -51,6 +52,14 @@ final class AppContainer {
 
     func makeGetCoinMarketUseCase() -> GetCoinMarketUseCase {
         GetCoinMarketUseCase(coinRepository: coinRepository)
+    }
+
+    func makeGetWatchlistUseCase() -> GetWatchlistUseCase {
+        GetWatchlistUseCase(watchlistRepository: watchlistRepository, coinRepository: coinRepository)
+    }
+
+    func makeToggleWatchlistUseCase() -> ToggleWatchlistUseCase {
+        ToggleWatchlistUseCase(watchlistRepository: watchlistRepository)
     }
 }
 
