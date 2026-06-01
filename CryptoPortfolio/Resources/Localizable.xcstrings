@@ -228,6 +228,24 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Search a coin" } },
         "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin ara" } }
       }
+    },
+    "watchlist.addCoin.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add to watchlist" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İzlemeye ekle" } }
+      }
+    },
+    "watchlist.add.empty.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search to add a coin" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin eklemek için ara" } }
+      }
+    },
+    "watchlist.add.empty.message" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Type a coin name or symbol and press Search." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin adı veya sembolü yazıp Ara'ya bas." } }
+      }
     }
   },
   "version" : "1.0"

@@ -21,6 +21,12 @@ struct WatchlistView: View {
                 .toolbar { trailingToolbar }
                 .refreshable { await viewModel.refresh() }
                 .task { await viewModel.load() }
+                .sheet(isPresented: $isShowingAddSheet) {
+                    AddToWatchlistView(container: container) {
+                        isShowingAddSheet = false
+                        Task { await viewModel.load() }
+                    }
+                }
         }
     }
 
