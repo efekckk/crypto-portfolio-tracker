@@ -5,11 +5,8 @@ struct RootView: View {
 
     var body: some View {
         TabView {
-            PortfolioView(
-                getSummary: container.makeGetPortfolioSummaryUseCase(),
-                removeHolding: container.makeRemoveHoldingUseCase()
-            )
-            .tabItem { Label("tab.portfolio", systemImage: "chart.pie.fill") }
+            PortfolioView(container: container)
+                .tabItem { Label("tab.portfolio", systemImage: "chart.pie.fill") }
 
             PlaceholderTab(titleKey: "tab.watchlist", systemImage: "star.fill")
                 .tabItem { Label("tab.watchlist", systemImage: "star.fill") }

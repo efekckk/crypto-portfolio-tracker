@@ -4,11 +4,10 @@ struct AddCoinView: View {
     @StateObject private var viewModel: AddCoinViewModel
     let onDone: (_ saved: Bool) -> Void
 
-    init(searchCoins: SearchCoinsUseCase,
-         addHolding: AddHoldingUseCase,
-         onDone: @escaping (Bool) -> Void) {
+    init(container: AppContainer, onDone: @escaping (Bool) -> Void) {
         _viewModel = StateObject(wrappedValue: AddCoinViewModel(
-            searchCoins: searchCoins, addHolding: addHolding
+            searchCoins: container.makeSearchCoinsUseCase(),
+            addHolding: container.makeAddHoldingUseCase()
         ))
         self.onDone = onDone
     }

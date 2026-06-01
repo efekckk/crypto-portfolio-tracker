@@ -2,14 +2,15 @@ import SwiftUI
 
 struct PortfolioView: View {
     @StateObject private var viewModel: PortfolioViewModel
-    @Environment(\.appContainer) private var container
+    private let container: AppContainer
     @State private var isShowingAddCoin = false
 
-    init(getSummary: GetPortfolioSummaryUseCase,
-         removeHolding: RemoveHoldingUseCase,
-         currency: Currency = .default) {
+    init(container: AppContainer, currency: Currency = .default) {
+        self.container = container
         _viewModel = StateObject(wrappedValue: PortfolioViewModel(
-            getSummary: getSummary, removeHolding: removeHolding, currency: currency
+            getSummary: container.makeGetPortfolioSummaryUseCase(),
+            removeHolding: container.makeRemoveHoldingUseCase(),
+            currency: currency
         ))
     }
 
@@ -62,8 +63,7 @@ struct PortfolioView: View {
                             coinId: item.holding.coinId,
                             coinName: item.coin?.name ?? item.holding.coinId.capitalized,
                             currency: viewModel.currency,
-                            getCoinMarket: container.makeGetCoinMarketUseCase(),
-                            getCoinChart: container.makeGetCoinChartUseCase()
+                            container: container
                         )
                     } label: {
                         HoldingRow(valuation: item, currency: viewModel.currency)
@@ -80,10 +80,7 @@ struct PortfolioView: View {
 
     @ViewBuilder
     private var addCoinSheet: some View {
-        AddCoinView(
-            searchCoins: container.makeSearchCoinsUseCase(),
-            addHolding: container.makeAddHoldingUseCase()
-        ) { saved in
+        AddCoinView(container: container) { saved in
             isShowingAddCoin = false
             if saved { Task { await viewModel.load() } }
         }

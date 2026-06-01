@@ -7,11 +7,11 @@ struct CoinDetailView: View {
     init(coinId: String,
          coinName: String,
          currency: Currency,
-         getCoinMarket: GetCoinMarketUseCase,
-         getCoinChart: GetCoinChartUseCase) {
+         container: AppContainer) {
         _viewModel = StateObject(wrappedValue: CoinDetailViewModel(
             coinId: coinId, currency: currency,
-            getCoinMarket: getCoinMarket, getCoinChart: getCoinChart
+            getCoinMarket: container.makeGetCoinMarketUseCase(),
+            getCoinChart: container.makeGetCoinChartUseCase()
         ))
         self.coinName = coinName
     }
