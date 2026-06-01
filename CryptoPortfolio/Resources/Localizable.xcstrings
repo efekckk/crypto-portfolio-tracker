@@ -192,6 +192,42 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "24h low" } },
         "tr" : { "stringUnit" : { "state" : "translated", "value" : "24s düşük" } }
       }
+    },
+    "watchlist.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Watchlist" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İzleme" } }
+      }
+    },
+    "watchlist.empty.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No watched coins" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İzlenen coin yok" } }
+      }
+    },
+    "watchlist.empty.message" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tap + to search and star coins you want to follow." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "+ ile takip etmek istediğin coinleri ara ve yıldızla." } }
+      }
+    },
+    "watchlist.addCoin.accessibility" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add coin to watchlist" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İzleme listesine coin ekle" } }
+      }
+    },
+    "watchlist.unwatch" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unstar" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Yıldızı kaldır" } }
+      }
+    },
+    "watchlist.search.prompt" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search a coin" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin ara" } }
+      }
     }
   },
   "version" : "1.0"
