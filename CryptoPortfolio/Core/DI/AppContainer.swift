@@ -78,6 +78,10 @@ final class AppContainer {
     func makeSetAlertActiveUseCase() -> SetAlertActiveUseCase {
         SetAlertActiveUseCase(alertRepository: alertRepository)
     }
+
+    func makeEvaluateAlertsUseCase(currency: Currency = .default) -> EvaluateAlertsUseCase {
+        EvaluateAlertsUseCase(alertRepository: alertRepository, coinRepository: coinRepository, currency: currency)
+    }
 }
 
 private struct AppContainerKey: EnvironmentKey {
