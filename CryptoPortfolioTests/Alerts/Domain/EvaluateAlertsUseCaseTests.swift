@@ -108,4 +108,16 @@ final class EvaluateAlertsUseCaseTests: XCTestCase {
         XCTAssertEqual(firings.count, 1, "Only the BTC above-40k fires; ETH 4000 is not below 3000")
         XCTAssertEqual(firings.first?.alert.coinId, "bitcoin")
     }
+
+    func test_aboveAlertFiresAtExactTarget() async throws {
+        let alert = PriceAlert(coinId: "bitcoin", targetPrice: 50_000, direction: .above)
+        let (sut, _, _) = makeSUT(
+            alerts: [alert],
+            coins: [Coin(id: "bitcoin", symbol: "btc", name: "Bitcoin", currentPrice: 50_000)]
+        )
+
+        let firings = try await sut(now: frozen)
+
+        XCTAssertEqual(firings.count, 1, "Above-50k alert must fire when price == 50k (inclusive)")
+    }
 }

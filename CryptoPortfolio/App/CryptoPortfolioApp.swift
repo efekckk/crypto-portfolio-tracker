@@ -37,6 +37,9 @@ struct CryptoPortfolioApp: App {
             _ = await container.evaluateAndNotify(currency: .default)
             task.setTaskCompleted(success: true)
         }
-        task.expirationHandler = { workItem.cancel() }
+        task.expirationHandler = {
+            workItem.cancel()
+            task.setTaskCompleted(success: false)
+        }
     }
 }

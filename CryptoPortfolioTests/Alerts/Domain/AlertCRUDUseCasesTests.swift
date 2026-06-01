@@ -62,4 +62,18 @@ final class AlertCRUDUseCasesTests: XCTestCase {
 
         XCTAssertTrue(try repo.alerts().isEmpty)
     }
+
+    func test_setAlertActive_true_clearsFiredAt() throws {
+        let repo = MockAlertRepository()
+        let alert = PriceAlert(coinId: "bitcoin", targetPrice: 50_000, direction: .above,
+                               isActive: false, firedAt: Date(timeIntervalSince1970: 1))
+        try repo.save(alert)
+        let sut = SetAlertActiveUseCase(alertRepository: repo)
+
+        try sut(id: alert.id, isActive: true)
+
+        let updated = try repo.alert(id: alert.id)
+        XCTAssertEqual(updated?.isActive, true)
+        XCTAssertNil(updated?.firedAt, "Re-arming must clear firedAt so the alert can fire again")
+    }
 }
