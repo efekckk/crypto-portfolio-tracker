@@ -34,4 +34,17 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="CDAlert" representedClassName="CDAlert" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="coinId" optional="NO" attributeType="String"/>
+        <attribute name="targetPrice" optional="NO" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="direction" optional="NO" attributeType="String" defaultValueString="above"/>
+        <attribute name="isActive" optional="NO" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="firedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
 </model>
