@@ -35,17 +35,20 @@ final class CreateAlertViewModel: ObservableObject {
 
         let normalized = targetPriceText.replacingOccurrences(of: ",", with: ".")
         guard let price = Double(normalized) else {
-            saveError = "Target price is not a number."
+            saveError = String(localized: "createAlert.error.priceNotNumber",
+                               defaultValue: "Target price is not a number.")
             return false
         }
         do {
             try createAlert(coinId: coin.id, targetPrice: price, direction: direction)
             return true
         } catch AlertError.invalidPrice {
-            saveError = "Target price must be greater than zero."
+            saveError = String(localized: "createAlert.error.priceNotPositive",
+                               defaultValue: "Target price must be greater than zero.")
             return false
         } catch {
-            saveError = "Could not save alert."
+            saveError = String(localized: "createAlert.error.saveFailed",
+                               defaultValue: "Could not save alert.")
             return false
         }
     }

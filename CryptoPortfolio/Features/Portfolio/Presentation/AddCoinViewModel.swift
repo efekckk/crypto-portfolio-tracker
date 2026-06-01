@@ -38,10 +38,12 @@ final class AddCoinViewModel: ObservableObject {
             try addHolding(coinId: coinId, amount: amount, buyPrice: buyPrice)
             return true
         } catch PortfolioError.invalidAmount {
-            saveError = "Amount must be greater than zero."
+            saveError = String(localized: "addCoin.error.amountNotPositive",
+                               defaultValue: "Amount must be greater than zero.")
             return false
         } catch {
-            saveError = "Could not save holding."
+            saveError = String(localized: "addCoin.error.saveFailed",
+                               defaultValue: "Could not save holding.")
             return false
         }
     }

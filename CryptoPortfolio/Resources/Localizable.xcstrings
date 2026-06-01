@@ -378,6 +378,72 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Invalid QR code" } },
         "tr" : { "stringUnit" : { "state" : "translated", "value" : "Geçersiz QR kodu" } }
       }
+    },
+    "error.api.rateLimited" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Rate limited. Please try again in a moment." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Hız sınırına takıldık. Lütfen birazdan tekrar dene." } }
+      }
+    },
+    "error.api.networkFormat" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Network error: %@" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Ağ hatası: %@" } }
+      }
+    },
+    "error.api.serverErrorFormat" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Server error (%d)." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Sunucu hatası (%d)." } }
+      }
+    },
+    "error.api.decoding" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Could not parse server response." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Sunucu yanıtı çözümlenemedi." } }
+      }
+    },
+    "error.api.invalidURL" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Invalid request." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Geçersiz istek." } }
+      }
+    },
+    "error.generic" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Something went wrong." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Bir şeyler ters gitti." } }
+      }
+    },
+    "addCoin.error.amountNotPositive" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Amount must be greater than zero." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Miktar sıfırdan büyük olmalı." } }
+      }
+    },
+    "addCoin.error.saveFailed" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Could not save holding." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Varlık kaydedilemedi." } }
+      }
+    },
+    "createAlert.error.priceNotNumber" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Target price is not a number." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Hedef fiyat bir sayı değil." } }
+      }
+    },
+    "createAlert.error.priceNotPositive" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Target price must be greater than zero." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Hedef fiyat sıfırdan büyük olmalı." } }
+      }
+    },
+    "createAlert.error.saveFailed" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Could not save alert." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Alarm kaydedilemedi." } }
+      }
     }
   },
   "version" : "1.0"

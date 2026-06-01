@@ -1,23 +1,35 @@
 import Foundation
 
 extension APIError {
-    /// English fallback messages used when no localized error is in play.
-    /// Phase 7 will replace these with `LocalizedStringKey`-backed strings.
+    /// Localized user-facing message for this error. Falls back to the English text
+    /// embedded as the localised key's default value if no string catalog entry is
+    /// found.
     var userFacingMessage: String {
         switch self {
-        case .rateLimited:                  return "Rate limited. Please try again in a moment."
-        case .transport(let msg):           return "Network error: \(msg)"
-        case .requestFailed(let code):      return "Server error (\(code))."
-        case .decoding:                     return "Could not parse server response."
-        case .invalidURL:                   return "Invalid request."
+        case .rateLimited:
+            return String(localized: "error.api.rateLimited",
+                          defaultValue: "Rate limited. Please try again in a moment.")
+        case .transport(let msg):
+            let format = String(localized: "error.api.networkFormat",
+                                defaultValue: "Network error: %@")
+            return String(format: format, msg)
+        case .requestFailed(let code):
+            let format = String(localized: "error.api.serverErrorFormat",
+                                defaultValue: "Server error (%d).")
+            return String(format: format, code)
+        case .decoding:
+            return String(localized: "error.api.decoding",
+                          defaultValue: "Could not parse server response.")
+        case .invalidURL:
+            return String(localized: "error.api.invalidURL",
+                          defaultValue: "Invalid request.")
         }
     }
 }
 
 extension Error {
-    /// Convenience: `APIError` instances get their tailored message; everything else
-    /// falls back to a generic string. Keeps view-model error paths to a single line.
     var userFacingMessage: String {
-        (self as? APIError)?.userFacingMessage ?? "Something went wrong."
+        (self as? APIError)?.userFacingMessage
+            ?? String(localized: "error.generic", defaultValue: "Something went wrong.")
     }
 }
