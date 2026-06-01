@@ -51,8 +51,7 @@ struct CoinDetailView: View {
                 selection: Binding(
                     get: { viewModel.selectedRange },
                     set: { newValue in Task { await viewModel.changeRange(to: newValue) } }
-                ),
-                onChange: { _ in /* binding setter handles reload */ }
+                )
             )
             chartContent
         }
