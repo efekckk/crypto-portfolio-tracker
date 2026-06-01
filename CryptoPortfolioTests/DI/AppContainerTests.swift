@@ -38,4 +38,12 @@ final class AppContainerTests: XCTestCase {
         XCTAssertNotNil(get); XCTAssertNotNil(toggle)
         _ = get; _ = toggle
     }
+
+    func test_buildsAlertUseCases() throws {
+        let container = makeSUT()
+        _ = container.makeGetAlertsUseCase()
+        _ = container.makeCreateAlertUseCase()
+        _ = container.makeDeleteAlertUseCase()
+        _ = container.makeSetAlertActiveUseCase()
+    }
 }

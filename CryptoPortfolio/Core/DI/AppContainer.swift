@@ -27,6 +27,7 @@ final class AppContainer {
     private(set) lazy var coinRepository: CoinRepository = CoinRepositoryImpl(httpClient: httpClient)
     private(set) lazy var portfolioRepository: PortfolioRepository = PortfolioRepositoryImpl(stack: coreDataStack)
     private(set) lazy var watchlistRepository: WatchlistRepository = WatchlistRepositoryImpl(stack: coreDataStack)
+    private(set) lazy var alertRepository: AlertRepository = AlertRepositoryImpl(stack: coreDataStack)
 
     // MARK: - Use case factories
 
@@ -60,6 +61,22 @@ final class AppContainer {
 
     func makeToggleWatchlistUseCase() -> ToggleWatchlistUseCase {
         ToggleWatchlistUseCase(watchlistRepository: watchlistRepository)
+    }
+
+    func makeGetAlertsUseCase() -> GetAlertsUseCase {
+        GetAlertsUseCase(alertRepository: alertRepository)
+    }
+
+    func makeCreateAlertUseCase() -> CreateAlertUseCase {
+        CreateAlertUseCase(alertRepository: alertRepository)
+    }
+
+    func makeDeleteAlertUseCase() -> DeleteAlertUseCase {
+        DeleteAlertUseCase(alertRepository: alertRepository)
+    }
+
+    func makeSetAlertActiveUseCase() -> SetAlertActiveUseCase {
+        SetAlertActiveUseCase(alertRepository: alertRepository)
     }
 }
 

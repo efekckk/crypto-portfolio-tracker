@@ -63,3 +63,27 @@ final class MockWatchlistRepository: WatchlistRepository {
         storage[coinId] = nil
     }
 }
+
+// MARK: - Alerts
+
+final class MockAlertRepository: AlertRepository {
+    var storage: [UUID: PriceAlert] = [:]
+    var errorToThrow: Error?
+
+    func alerts() throws -> [PriceAlert] {
+        if let errorToThrow { throw errorToThrow }
+        return Array(storage.values)
+    }
+    func alert(id: UUID) throws -> PriceAlert? {
+        if let errorToThrow { throw errorToThrow }
+        return storage[id]
+    }
+    func save(_ alert: PriceAlert) throws {
+        if let errorToThrow { throw errorToThrow }
+        storage[alert.id] = alert
+    }
+    func delete(id: UUID) throws {
+        if let errorToThrow { throw errorToThrow }
+        storage[id] = nil
+    }
+}
