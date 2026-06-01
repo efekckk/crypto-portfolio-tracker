@@ -33,5 +33,14 @@
     <array>
         <string>UIInterfaceOrientationPortrait</string>
     </array>
+    <key>BGTaskSchedulerPermittedIdentifiers</key>
+    <array>
+        <string>com.foneria.cryptoportfolio.alerts.refresh</string>
+    </array>
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>fetch</string>
+        <string>processing</string>
+    </array>
 </dict>
 </plist>
