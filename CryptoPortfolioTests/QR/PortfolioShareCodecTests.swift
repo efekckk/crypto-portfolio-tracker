@@ -74,4 +74,12 @@ final class PortfolioShareCodecTests: XCTestCase {
         XCTAssertEqual(a.id, b.id)
         XCTAssertNotEqual(a.id, c.id)
     }
+
+    func test_portfolioShareCode_idDistinguishesHyphenatedCoinIds() {
+        // Real coin ids contain hyphens (e.g. "wrapped-bitcoin"). The id separator
+        // must not collide between distinct codes.
+        let a = PortfolioShareCode(coinId: "wrapped-bitcoin", amount: 1.0)
+        let b = PortfolioShareCode(coinId: "wrapped", amount: 1.0) // would collide on "-"
+        XCTAssertNotEqual(a.id, b.id)
+    }
 }

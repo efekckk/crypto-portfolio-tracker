@@ -6,5 +6,6 @@ struct PortfolioShareCode: Identifiable, Equatable {
     let amount: Double
 
     /// Stable identifier so SwiftUI `.sheet(item:)` can present the right sheet.
-    var id: String { "\(coinId)-\(amount)" }
+    /// Uses `|` because real coin ids contain `-` (e.g. `wrapped-bitcoin`).
+    var id: String { "\(coinId)|\(amount)" }
 }

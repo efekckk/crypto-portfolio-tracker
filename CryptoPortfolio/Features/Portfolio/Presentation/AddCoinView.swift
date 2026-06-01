@@ -36,7 +36,9 @@ struct AddCoinView: View {
                     ScanQRSheet(
                         onCodeDetected: { code in
                             isShowingScanner = false
-                            scannedCode = code
+                            // Defer to the next runloop so the dismiss completes before
+                            // SwiftUI sees the new sheet trigger (iOS 16 swallows otherwise).
+                            Task { @MainActor in scannedCode = code }
                         },
                         onCancel: { isShowingScanner = false }
                     )
