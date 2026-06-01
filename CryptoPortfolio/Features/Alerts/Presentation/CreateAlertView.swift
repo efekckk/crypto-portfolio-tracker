@@ -2,13 +2,17 @@ import SwiftUI
 
 struct CreateAlertView: View {
     @StateObject private var viewModel: CreateAlertViewModel
+    private let initialCoin: Coin?
     let onDone: (_ didCreate: Bool) -> Void
 
-    init(container: AppContainer, onDone: @escaping (Bool) -> Void) {
+    @State private var directRoute: Coin?
+
+    init(container: AppContainer, initialCoin: Coin? = nil, onDone: @escaping (Bool) -> Void) {
         _viewModel = StateObject(wrappedValue: CreateAlertViewModel(
             searchCoins: container.makeSearchCoinsUseCase(),
             createAlert: container.makeCreateAlertUseCase()
         ))
+        self.initialCoin = initialCoin
         self.onDone = onDone
     }
 
@@ -22,6 +26,24 @@ struct CreateAlertView: View {
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("common.cancel") { onDone(false) }
+                    }
+                }
+                .background(
+                    NavigationLink(
+                        isActive: Binding(
+                            get: { directRoute != nil },
+                            set: { if !$0 { directRoute = nil } }
+                        )
+                    ) {
+                        if let coin = directRoute {
+                            AlertConditionView(coin: coin, viewModel: viewModel) { saved in onDone(saved) }
+                        }
+                    } label: { EmptyView() }
+                    .hidden()
+                )
+                .task {
+                    if let coin = initialCoin, directRoute == nil {
+                        directRoute = coin
                     }
                 }
         }

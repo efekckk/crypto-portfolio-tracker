@@ -48,8 +48,8 @@ struct CoinDetailView: View {
                 ) { _ in addingHolding = nil }
             }
         }
-        .sheet(item: $creatingAlertFor) { _ in
-            CreateAlertView(container: container) { _ in
+        .sheet(item: $creatingAlertFor) { coin in
+            CreateAlertView(container: container, initialCoin: coin) { _ in
                 creatingAlertFor = nil
             }
         }
@@ -86,8 +86,7 @@ struct CoinDetailView: View {
                 Button {
                     Task { await viewModel.toggleWatchlist() }
                 } label: {
-                    Label(viewModel.isWatched ? "coinDetail.action.watchlistRemove"
-                                              : "coinDetail.action.watchlistAdd",
+                    Label(watchlistLabelKey,
                           systemImage: viewModel.isWatched ? "star.slash.fill" : "star.fill")
                         .frame(maxWidth: .infinity)
                 }
@@ -104,6 +103,11 @@ struct CoinDetailView: View {
             }
             .font(.subheadline.weight(.medium))
         }
+    }
+
+    private var watchlistLabelKey: LocalizedStringKey {
+        viewModel.isWatched ? "coinDetail.action.watchlistRemove"
+                            : "coinDetail.action.watchlistAdd"
     }
 
     private var rangeAndChartSection: some View {
