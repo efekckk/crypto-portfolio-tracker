@@ -8,7 +8,7 @@ struct RootView: View {
             PortfolioView(container: container)
                 .tabItem { Label("tab.portfolio", systemImage: "chart.pie.fill") }
 
-            PlaceholderTab(titleKey: "tab.watchlist", systemImage: "star.fill")
+            WatchlistView(container: container)
                 .tabItem { Label("tab.watchlist", systemImage: "star.fill") }
 
             PlaceholderTab(titleKey: "tab.alerts", systemImage: "bell.fill")
