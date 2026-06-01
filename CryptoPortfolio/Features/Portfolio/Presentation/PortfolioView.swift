@@ -4,6 +4,7 @@ struct PortfolioView: View {
     @StateObject private var viewModel: PortfolioViewModel
     private let container: AppContainer
     @State private var isShowingAddCoin = false
+    @State private var sharingCode: PortfolioShareCode?
 
     init(container: AppContainer, currency: Currency = .default) {
         self.container = container
@@ -22,6 +23,9 @@ struct PortfolioView: View {
                 .refreshable { await viewModel.refresh() }
                 .task { await viewModel.load() }
                 .sheet(isPresented: $isShowingAddCoin) { addCoinSheet }
+                .sheet(item: $sharingCode) { code in
+                    ShareQRView(code: code, coinName: code.coinId.capitalized)
+                }
         }
     }
 
@@ -67,6 +71,13 @@ struct PortfolioView: View {
                         )
                     } label: {
                         HoldingRow(valuation: item, currency: viewModel.currency)
+                    }
+                    .contextMenu {
+                        Button {
+                            sharingCode = PortfolioShareCode(coinId: item.holding.coinId, amount: item.holding.amount)
+                        } label: {
+                            Label("portfolio.shareQR", systemImage: "qrcode")
+                        }
                     }
                 }
                 .onDelete { indices in
