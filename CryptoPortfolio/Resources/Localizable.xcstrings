@@ -294,6 +294,54 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete" } },
         "tr" : { "stringUnit" : { "state" : "translated", "value" : "Sil" } }
       }
+    },
+    "alerts.create.searchTitle" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pick a coin" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin seç" } }
+      }
+    },
+    "alerts.create.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "New alert" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Yeni alarm" } }
+      }
+    },
+    "alerts.create.search.prompt" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search a coin" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin ara" } }
+      }
+    },
+    "alerts.create.empty.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search to add a coin" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin eklemek için ara" } }
+      }
+    },
+    "alerts.create.empty.message" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Type a coin name or symbol and press Search." } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin adı veya sembolü yazıp Ara'ya bas." } }
+      }
+    },
+    "alerts.create.direction" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Direction" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Yön" } }
+      }
+    },
+    "alerts.create.targetPrice" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Target price" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Hedef fiyat" } }
+      }
+    },
+    "alerts.create.save" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Save" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Kaydet" } }
+      }
     }
   },
   "version" : "1.0"

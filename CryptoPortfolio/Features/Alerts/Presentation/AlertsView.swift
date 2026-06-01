@@ -27,6 +27,17 @@ struct AlertsView: View {
                     await viewModel.load()
                     await viewModel.evaluateNow()
                 }
+                .sheet(isPresented: $isShowingCreate) {
+                    CreateAlertView(container: container) { didCreate in
+                        isShowingCreate = false
+                        if didCreate {
+                            Task {
+                                await viewModel.load()
+                                await viewModel.evaluateNow()
+                            }
+                        }
+                    }
+                }
         }
     }
 
