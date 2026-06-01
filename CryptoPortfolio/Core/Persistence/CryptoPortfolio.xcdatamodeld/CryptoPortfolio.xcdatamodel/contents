@@ -25,4 +25,13 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="CDWatchItem" representedClassName="CDWatchItem" syncable="YES" codeGenerationType="class">
+        <attribute name="coinId" optional="NO" attributeType="String"/>
+        <attribute name="addedAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="coinId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
 </model>
