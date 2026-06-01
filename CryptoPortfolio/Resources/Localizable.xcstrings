@@ -342,6 +342,18 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Save" } },
         "tr" : { "stringUnit" : { "state" : "translated", "value" : "Kaydet" } }
       }
+    },
+    "qr.share.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Share QR" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "QR paylaş" } }
+      }
+    },
+    "qr.share.button" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Share" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Paylaş" } }
+      }
     }
   },
   "version" : "1.0"
