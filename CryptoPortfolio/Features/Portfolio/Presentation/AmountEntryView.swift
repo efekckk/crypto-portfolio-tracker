@@ -7,8 +7,18 @@ struct AmountEntryView: View {
     @ObservedObject var viewModel: AddCoinViewModel
     let onSave: (Bool) -> Void
 
-    @State private var amountText: String = ""
+    @State private var amountText: String
     @State private var buyPriceText: String = ""
+
+    init(coin: Coin,
+         viewModel: AddCoinViewModel,
+         prefillAmount: Double? = nil,
+         onSave: @escaping (Bool) -> Void) {
+        self.coin = coin
+        self.viewModel = viewModel
+        self.onSave = onSave
+        _amountText = State(initialValue: prefillAmount.map { String($0) } ?? "")
+    }
 
     var body: some View {
         Form {

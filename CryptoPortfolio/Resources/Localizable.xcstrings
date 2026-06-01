@@ -360,6 +360,24 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Share QR" } },
         "tr" : { "stringUnit" : { "state" : "translated", "value" : "QR paylaş" } }
       }
+    },
+    "addCoin.scanQR.button" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan QR" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "QR tara" } }
+      }
+    },
+    "addCoin.scanQR.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan portfolio QR" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Portföy QR'ı tara" } }
+      }
+    },
+    "addCoin.scanQR.invalid" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Invalid QR code" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Geçersiz QR kodu" } }
+      }
     }
   },
   "version" : "1.0"

@@ -4,6 +4,9 @@ struct AddCoinView: View {
     @StateObject private var viewModel: AddCoinViewModel
     let onDone: (_ saved: Bool) -> Void
 
+    @State private var isShowingScanner = false
+    @State private var scannedCode: PortfolioShareCode?
+
     init(container: AppContainer, onDone: @escaping (Bool) -> Void) {
         _viewModel = StateObject(wrappedValue: AddCoinViewModel(
             searchCoins: container.makeSearchCoinsUseCase(),
@@ -22,6 +25,32 @@ struct AddCoinView: View {
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("common.cancel") { onDone(false) }
+                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button { isShowingScanner = true } label: {
+                            Label("addCoin.scanQR.button", systemImage: "qrcode.viewfinder")
+                        }
+                    }
+                }
+                .sheet(isPresented: $isShowingScanner) {
+                    ScanQRSheet(
+                        onCodeDetected: { code in
+                            isShowingScanner = false
+                            scannedCode = code
+                        },
+                        onCancel: { isShowingScanner = false }
+                    )
+                }
+                .sheet(item: $scannedCode) { code in
+                    NavigationStack {
+                        AmountEntryView(
+                            coin: Coin(id: code.coinId, symbol: code.coinId, name: code.coinId.capitalized),
+                            viewModel: viewModel,
+                            prefillAmount: code.amount
+                        ) { saved in
+                            scannedCode = nil
+                            if saved { onDone(true) }
+                        }
                     }
                 }
         }
