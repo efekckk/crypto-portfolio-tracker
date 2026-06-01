@@ -26,7 +26,7 @@ final class AddCoinViewModel: ObservableObject {
             let coins = try await searchCoins(trimmed)
             results = coins.isEmpty ? .empty : .loaded(coins)
         } catch {
-            results = .error(PortfolioViewModel.userFacingMessage(for: error))
+            results = .error(error.userFacingMessage)
         }
     }
 

@@ -37,7 +37,7 @@ final class CoinDetailViewModel: ObservableObject {
                 headerState = .error("Coin not found.")
             }
         } catch {
-            headerState = .error(PortfolioViewModel.userFacingMessage(for: error))
+            headerState = .error(error.userFacingMessage)
         }
     }
 
@@ -47,7 +47,7 @@ final class CoinDetailViewModel: ObservableObject {
             let points = try await getCoinChart(coinId: coinId, range: selectedRange, currency: currency)
             chartState = .loaded(points)
         } catch {
-            chartState = .error(PortfolioViewModel.userFacingMessage(for: error))
+            chartState = .error(error.userFacingMessage)
         }
     }
 
