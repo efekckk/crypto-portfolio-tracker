@@ -93,4 +93,29 @@ final class CoinDetailViewModelTests: XCTestCase {
             XCTFail("Expected chart .loaded after final range change")
         }
     }
+
+    func test_toggleWatchlist_addsAndThenRemoves_andUpdatesIsWatched() async {
+        let watchRepo = MockWatchlistRepository()
+        let coinRepo = MockCoinRepository()
+        let coin = Coin(id: "bitcoin", symbol: "btc", name: "Bitcoin", currentPrice: 50_000)
+        coinRepo.marketsResult = [coin]
+        let vm = CoinDetailViewModel(
+            coinId: "bitcoin",
+            currency: .usd,
+            getCoinMarket: GetCoinMarketUseCase(coinRepository: coinRepo),
+            getCoinChart: GetCoinChartUseCase(coinRepository: coinRepo),
+            toggleWatchlist: ToggleWatchlistUseCase(watchlistRepository: watchRepo),
+            watchlistRepository: watchRepo
+        )
+        await vm.refreshIsWatched()
+        XCTAssertFalse(vm.isWatched)
+
+        await vm.toggleWatchlist()
+        XCTAssertTrue(vm.isWatched)
+        XCTAssertTrue(try watchRepo.isWatched(coinId: "bitcoin"))
+
+        await vm.toggleWatchlist()
+        XCTAssertFalse(vm.isWatched)
+        XCTAssertFalse(try watchRepo.isWatched(coinId: "bitcoin"))
+    }
 }

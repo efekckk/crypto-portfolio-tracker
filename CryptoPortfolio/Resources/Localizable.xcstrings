@@ -438,6 +438,30 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Could not save alert." } },
         "tr" : { "stringUnit" : { "state" : "translated", "value" : "Alarm kaydedilemedi." } }
       }
+    },
+    "coinDetail.action.addToPortfolio" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add to portfolio" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Portföye ekle" } }
+      }
+    },
+    "coinDetail.action.watchlistAdd" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Watch" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İzle" } }
+      }
+    },
+    "coinDetail.action.watchlistRemove" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unwatch" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İzlemeyi bırak" } }
+      }
+    },
+    "coinDetail.action.createAlert" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Create alert" } },
+        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Alarm oluştur" } }
+      }
     }
   },
   "version" : "1.0"
