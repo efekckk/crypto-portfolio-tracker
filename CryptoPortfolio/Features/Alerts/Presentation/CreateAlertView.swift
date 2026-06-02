@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CreateAlertView: View {
     @StateObject private var viewModel: CreateAlertViewModel
+    private let container: AppContainer
     private let initialCoin: Coin?
     let onDone: (_ didCreate: Bool) -> Void
 
@@ -9,9 +10,9 @@ struct CreateAlertView: View {
 
     init(container: AppContainer, initialCoin: Coin? = nil, onDone: @escaping (Bool) -> Void) {
         _viewModel = StateObject(wrappedValue: CreateAlertViewModel(
-            searchCoins: container.makeSearchCoinsUseCase(),
-            createAlert: container.makeCreateAlertUseCase()
+            searchCoins: container.makeSearchCoinsUseCase()
         ))
+        self.container = container
         self.initialCoin = initialCoin
         self.onDone = onDone
     }
@@ -36,7 +37,7 @@ struct CreateAlertView: View {
                         )
                     ) {
                         if let coin = directRoute {
-                            AlertConditionView(coin: coin, viewModel: viewModel) { saved in onDone(saved) }
+                            PriceAlertFormView(coin: coin, container: container) { saved in onDone(saved) }
                         }
                     } label: { EmptyView() }
                     .hidden()
@@ -65,7 +66,7 @@ struct CreateAlertView: View {
         case .loaded(let coins):
             List(coins) { coin in
                 NavigationLink {
-                    AlertConditionView(coin: coin, viewModel: viewModel) { saved in onDone(saved) }
+                    PriceAlertFormView(coin: coin, container: container) { saved in onDone(saved) }
                 } label: {
                     coinRow(coin)
                 }
