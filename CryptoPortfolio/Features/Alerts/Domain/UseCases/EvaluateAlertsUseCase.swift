@@ -1,34 +1,164 @@
 import Foundation
 
-/// Pure-ish evaluation: read active alerts → fetch current prices → decide crossings →
-/// persist `firedAt`/`isActive=false` → return firings for the caller to notify.
+/// Polymorphic alert evaluation. One consolidated markets fetch per pass.
+/// Persists firing state (`firedAt`, `isActive`, `lastConditionResult`) and
+/// returns one `AlertFiring` per alert that should notify the user this pass.
 struct EvaluateAlertsUseCase {
     let alertRepository: AlertRepository
     let coinRepository: CoinRepository
+    let portfolioRepository: PortfolioRepository
     let currency: Currency
 
     func callAsFunction(now: Date = Date()) async throws -> [AlertFiring] {
-        let active = try alertRepository.alerts().filter { $0.isActive && $0.firedAt == nil }
+        let active = try alertRepository.alerts().filter { $0.isActive }
         guard !active.isEmpty else { return [] }
-        let coinIds = Array(Set(active.map(\.coinId)))
-        let coins = try await coinRepository.markets(ids: coinIds, currency: currency)
-        let priceById = Dictionary(coins.map { ($0.id, $0.currentPrice) }, uniquingKeysWith: { first, _ in first })
 
+        // 1) Gather data requirements.
+        var coinIds: Set<String> = []
+        var needsPortfolio = false
+        for alert in active {
+            if let ids = alert.condition.requiredCoinIds {
+                coinIds.formUnion(ids)
+            } else {
+                needsPortfolio = true
+            }
+        }
+        var holdings: [Holding] = []
+        if needsPortfolio {
+            holdings = try portfolioRepository.holdings()
+            coinIds.formUnion(holdings.map(\.coinId))
+        }
+
+        // 2) Single consolidated markets call.
+        let coins: [Coin]
+        if coinIds.isEmpty {
+            coins = []
+        } else {
+            coins = try await coinRepository.markets(ids: Array(coinIds), currency: currency)
+        }
+        let coinsById = Dictionary(coins.map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
+
+        // 3) Portfolio summary (only when needed). An empty-holdings portfolio
+        //    is treated as "no data": evaluate() will return nil for portfolio
+        //    variants, so a `.portfolioValue(.below, X)` alert doesn't spam a
+        //    fresh user with "Portfolio total reached $0" notifications.
+        let summary: PortfolioSummary? = (needsPortfolio && !holdings.isEmpty)
+            ? Self.buildSummary(holdings: holdings, coinsById: coinsById)
+            : nil
+
+        // 4) Per-alert eval + fire-decision + persisted state update.
+        //    We save per-alert rather than in a single transaction: a failure
+        //    mid-loop leaves earlier alerts persisted and later ones unchanged,
+        //    so on the next pass the unchanged ones simply re-evaluate from
+        //    their pre-loop state — acceptable for best-effort notification.
         var firings: [AlertFiring] = []
         for alert in active {
-            guard let price = priceById[alert.coinId] else { continue }
-            let crossed: Bool
-            switch alert.direction {
-            case .above: crossed = price >= alert.targetPrice
-            case .below: crossed = price <= alert.targetPrice
+            guard let conditionTrue = evaluate(alert.condition,
+                                               coinsById: coinsById,
+                                               summary: summary) else {
+                continue
             }
-            guard crossed else { continue }
-            var fired = alert
-            fired.isActive = false
-            fired.firedAt = now
-            try alertRepository.save(fired)
-            firings.append(AlertFiring(alert: fired, firedAt: now))
+            var updated = alert
+            if case .onCrossing = alert.recurrence {
+                updated.lastConditionResult = conditionTrue
+            }
+            if shouldFire(alert, conditionTrue: conditionTrue, now: now) {
+                updated.firedAt = now
+                if case .oneShot = alert.recurrence { updated.isActive = false }
+                firings.append(AlertFiring(alert: updated, firedAt: now))
+            }
+            if updated != alert {
+                try alertRepository.save(updated)
+            }
         }
         return firings
+    }
+
+    // MARK: - Per-variant evaluation
+
+    private func evaluate(_ condition: AlertCondition,
+                          coinsById: [String: Coin],
+                          summary: PortfolioSummary?) -> Bool? {
+        switch condition {
+        case .priceCrossing(let coinId, let direction, let target):
+            guard let coin = coinsById[coinId] else { return nil }
+            switch direction {
+            case .above: return coin.currentPrice >= target
+            case .below: return coin.currentPrice <= target
+            }
+        case .percentChange(let coinId, let direction, let window, let threshold):
+            guard let coin = coinsById[coinId] else { return nil }
+            let value: Double?
+            switch window {
+            case .h24: value = coin.priceChangePercentage24h
+            case .d7:  value = coin.priceChangePercentage7d
+            case .d30: value = coin.priceChangePercentage30d
+            }
+            guard let v = value else { return nil }
+            switch direction {
+            case .above: return v >= threshold
+            case .below: return v <= threshold
+            }
+        case .portfolioValue(let direction, let threshold):
+            guard let summary else { return nil }
+            switch direction {
+            case .above: return summary.totalValue >= threshold
+            case .below: return summary.totalValue <= threshold
+            }
+        case .portfolioPnLPercent(let direction, let threshold):
+            guard let summary else { return nil }
+            switch direction {
+            case .above: return summary.percentPnL >= threshold
+            case .below: return summary.percentPnL <= threshold
+            }
+        }
+    }
+
+    // MARK: - Recurrence state machine
+
+    private func shouldFire(_ alert: PriceAlert,
+                            conditionTrue: Bool,
+                            now: Date) -> Bool {
+        guard conditionTrue else { return false }
+        switch alert.recurrence {
+        case .oneShot:
+            return alert.firedAt == nil
+        case .cooldown(let seconds):
+            guard let last = alert.firedAt else { return true }
+            return now.timeIntervalSince(last) >= seconds
+        case .onCrossing:
+            return alert.lastConditionResult != true
+        }
+    }
+
+    // MARK: - Summary
+
+    /// Mirrors the math in `GetPortfolioSummaryUseCase` so portfolio-level
+    /// conditions stay private to the evaluator (no cross-use-case dependency).
+    /// **Keep these two in sync** — any change to portfolio P/L math must be
+    /// applied in both places. Missing coins fall back to a current price of
+    /// 0, matching `GetPortfolioSummaryUseCase` exactly (a partial-data
+    /// summary is preferred over returning nothing).
+    private static func buildSummary(holdings: [Holding],
+                                     coinsById: [String: Coin]) -> PortfolioSummary {
+        var items: [HoldingValuation] = []
+        var totalValue = 0.0
+        var totalCost = 0.0
+        for holding in holdings {
+            let coin = coinsById[holding.coinId]
+            let price = coin?.currentPrice ?? 0
+            let value = holding.amount * price
+            let cost = holding.amount * holding.averageBuyPrice
+            items.append(HoldingValuation(holding: holding, coin: coin,
+                                          currentValue: value, cost: cost))
+            totalValue += value
+            totalCost += cost
+        }
+        let pnl = totalValue - totalCost
+        let pct = totalCost > 0 ? (pnl / totalCost) * 100 : 0
+        return PortfolioSummary(
+            totalValue: totalValue, totalCost: totalCost,
+            absolutePnL: pnl, percentPnL: pct, items: items
+        )
     }
 }

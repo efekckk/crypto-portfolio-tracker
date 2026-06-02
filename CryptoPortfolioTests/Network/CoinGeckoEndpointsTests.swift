@@ -9,7 +9,7 @@ final class CoinGeckoEndpointsTests: XCTestCase {
         let items = Dictionary(uniqueKeysWithValues: endpoint.queryItems.map { ($0.name, $0.value) })
         XCTAssertEqual(items["vs_currency"], "usd")
         XCTAssertEqual(items["ids"], "bitcoin,ethereum")
-        XCTAssertEqual(items["price_change_percentage"], "24h")
+        XCTAssertEqual(items["price_change_percentage"], "24h,7d,30d")
     }
 
     func test_searchEndpoint() {
@@ -25,5 +25,11 @@ final class CoinGeckoEndpointsTests: XCTestCase {
         let items = Dictionary(uniqueKeysWithValues: endpoint.queryItems.map { ($0.name, $0.value) })
         XCTAssertEqual(items["vs_currency"], "usd")
         XCTAssertEqual(items["days"], "7")
+    }
+
+    func test_marketsEndpoint_requestsAllThreePercentWindows() {
+        let endpoint = CoinGeckoEndpoints.markets(ids: ["bitcoin"], vsCurrency: "usd")
+        let value = endpoint.queryItems.first(where: { $0.name == "price_change_percentage" })?.value
+        XCTAssertEqual(value, "24h,7d,30d")
     }
 }

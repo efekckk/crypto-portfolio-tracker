@@ -21,6 +21,13 @@ final class CoreDataStack {
             description.url = URL(fileURLWithPath: "/dev/null")
             container.persistentStoreDescriptions = [description]
         }
+        // Enable lightweight migration so the store upgrades transparently
+        // when the schema version increments. Core Data infers the mapping
+        // model between adjacent versions for additive/optional changes.
+        container.persistentStoreDescriptions.forEach { description in
+            description.shouldMigrateStoreAutomatically = true
+            description.shouldInferMappingModelAutomatically = true
+        }
         container.loadPersistentStores { _, error in
             if let error {
                 fatalError("Failed to load Core Data store: \(error)")

@@ -3,16 +3,19 @@ import SwiftUI
 struct AlertsView: View {
     @StateObject private var viewModel: AlertsViewModel
     private let container: AppContainer
+    private let currency: Currency
     @State private var isShowingCreate = false
 
     init(container: AppContainer, currency: Currency = .default) {
         self.container = container
+        self.currency = currency
         _viewModel = StateObject(wrappedValue: AlertsViewModel(
             getAlerts: container.makeGetAlertsUseCase(),
             deleteAlert: container.makeDeleteAlertUseCase(),
             setActive: container.makeSetAlertActiveUseCase(),
             evaluate: container.makeEvaluateAlertsUseCase(currency: currency),
-            notifications: container.notifications
+            notifications: container.notifications,
+            currency: currency
         ))
     }
 
@@ -72,7 +75,7 @@ struct AlertsView: View {
     private func loadedList(alerts: [PriceAlert]) -> some View {
         List {
             ForEach(alerts) { alert in
-                AlertRow(alert: alert, currency: .default) { newValue in
+                AlertRow(alert: alert, currency: currency) { newValue in
                     Task { await viewModel.setActive(id: alert.id, isActive: newValue) }
                 }
                 .swipeActions(edge: .trailing) {

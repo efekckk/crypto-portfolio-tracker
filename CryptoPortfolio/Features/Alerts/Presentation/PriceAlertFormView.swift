@@ -1,34 +1,40 @@
 import SwiftUI
 
-struct AlertConditionView: View {
-    let coin: Coin
-    @ObservedObject var viewModel: CreateAlertViewModel
+struct PriceAlertFormView: View {
+    @StateObject private var viewModel: CreatePriceAlertViewModel
     let onSave: (Bool) -> Void
 
-    @State private var direction: PriceAlert.Direction = .above
-    @State private var targetPriceText: String = ""
+    init(coin: Coin, container: AppContainer, onSave: @escaping (Bool) -> Void) {
+        _viewModel = StateObject(wrappedValue: CreatePriceAlertViewModel(
+            coin: coin,
+            createAlert: container.makeCreateAlertUseCase()
+        ))
+        self.onSave = onSave
+    }
 
     var body: some View {
         Form {
             Section {
-                Picker("alerts.create.direction", selection: $direction) {
-                    Text("alerts.direction.above").tag(PriceAlert.Direction.above)
-                    Text("alerts.direction.below").tag(PriceAlert.Direction.below)
+                Picker("alerts.form.direction", selection: $viewModel.direction) {
+                    Text("alerts.direction.above").tag(AlertCondition.Direction.above)
+                    Text("alerts.direction.below").tag(AlertCondition.Direction.below)
                 }
                 .pickerStyle(.segmented)
 
                 LabeledContent("alerts.create.targetPrice") {
-                    TextField("0.00", text: $targetPriceText)
+                    TextField("0.00", text: $viewModel.targetPriceText)
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                 }
             } header: {
-                Text(coin.name)
+                Text(viewModel.coin.name)
             } footer: {
                 if let error = viewModel.saveError {
                     Text(error).foregroundStyle(Theme.negative)
                 }
             }
+
+            RecurrencePickerView(state: $viewModel.recurrence)
         }
         .navigationTitle("alerts.create.title")
         .navigationBarTitleDisplayMode(.inline)
@@ -36,11 +42,11 @@ struct AlertConditionView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("alerts.create.save") {
                     Task {
-                        let saved = await viewModel.save(coin: coin, direction: direction, targetPriceText: targetPriceText)
+                        let saved = await viewModel.save()
                         if saved { onSave(true) }
                     }
                 }
-                .disabled(viewModel.isSaving || targetPriceText.isEmpty)
+                .disabled(viewModel.isSaving || viewModel.targetPriceText.isEmpty)
             }
         }
         .onAppear { viewModel.clearSaveError() }

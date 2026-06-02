@@ -1,468 +1,1814 @@
 {
-  "sourceLanguage" : "tr",
-  "strings" : {
-    "tab.alerts" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Alerts" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Alarmlar" } }
-      }
-    },
-    "tab.portfolio" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Portfolio" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Portföy" } }
-      }
-    },
-    "tab.watchlist" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Watchlist" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İzleme" } }
-      }
-    },
-    "common.comingSoon" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Coming soon" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Yakında" } }
-      }
-    },
-    "common.retry" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Retry" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Tekrar dene" } }
-      }
-    },
-    "portfolio.title" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Portfolio" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Portföy" } }
-      }
-    },
-    "portfolio.totalValue" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Total value" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Toplam değer" } }
-      }
-    },
-    "portfolio.empty.title" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "No holdings yet" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Henüz coin yok" } }
-      }
-    },
-    "portfolio.empty.message" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tap + to add your first coin and start tracking your portfolio." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "+ ile ilk coin'ini ekle ve portföyünü takibe başla." } }
-      }
-    },
-    "portfolio.holdings.section" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Holdings" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Varlıklar" } }
-      }
-    },
-    "portfolio.addCoin.accessibility" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add coin" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin ekle" } }
-      }
-    },
-    "addCoin.title" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add coin" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin ekle" } }
-      }
-    },
-    "addCoin.search.prompt" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search a coin" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin ara" } }
-      }
-    },
-    "addCoin.empty.title" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search to add a coin" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin eklemek için ara" } }
-      }
-    },
-    "addCoin.empty.message" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Type a coin name or symbol and press Search." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin adı veya sembolü yazıp Ara'ya bas." } }
-      }
-    },
-    "addCoin.amount.title" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Amount" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Miktar" } }
-      }
-    },
-    "addCoin.amount.label" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Amount" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Miktar" } }
-      }
-    },
-    "addCoin.amount.placeholder" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "0.00" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "0,00" } }
-      }
-    },
-    "addCoin.buyPrice.label" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Buy price" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Alış fiyatı" } }
-      }
-    },
-    "addCoin.buyPrice.placeholder" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "0.00" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "0,00" } }
-      }
-    },
-    "addCoin.save" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Save" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Kaydet" } }
-      }
-    },
-    "common.cancel" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cancel" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İptal" } }
-      }
-    },
-    "priceRange.label" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Range" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Aralık" } }
-      }
-    },
-    "priceRange.h24" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "24H" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "24S" } }
-      }
-    },
-    "priceRange.d7" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "7D" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "7G" } }
-      }
-    },
-    "priceRange.d30" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "30D" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "30G" } }
-      }
-    },
-    "priceRange.y1" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "1Y" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "1Y" } }
-      }
-    },
-    "coinDetail.stats.title" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Stats" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İstatistikler" } }
-      }
-    },
-    "coinDetail.stats.marketCap" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Market cap" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Piyasa değeri" } }
-      }
-    },
-    "coinDetail.stats.high24h" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "24h high" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "24s yüksek" } }
-      }
-    },
-    "coinDetail.stats.low24h" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "24h low" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "24s düşük" } }
-      }
-    },
-    "watchlist.title" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Watchlist" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İzleme" } }
-      }
-    },
-    "watchlist.empty.title" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "No watched coins" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İzlenen coin yok" } }
-      }
-    },
-    "watchlist.empty.message" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tap + to search and star coins you want to follow." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "+ ile takip etmek istediğin coinleri ara ve yıldızla." } }
-      }
-    },
-    "watchlist.addCoin.accessibility" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add coin to watchlist" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İzleme listesine coin ekle" } }
-      }
-    },
-    "watchlist.unwatch" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unstar" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Yıldızı kaldır" } }
-      }
-    },
-    "watchlist.search.prompt" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search a coin" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin ara" } }
-      }
-    },
-    "watchlist.addCoin.title" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add to watchlist" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İzlemeye ekle" } }
-      }
-    },
-    "watchlist.add.empty.title" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search to add a coin" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin eklemek için ara" } }
-      }
-    },
-    "watchlist.add.empty.message" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Type a coin name or symbol and press Search." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin adı veya sembolü yazıp Ara'ya bas." } }
-      }
-    },
-    "alerts.title" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Alerts" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Alarmlar" } }
-      }
-    },
-    "alerts.empty.title" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "No price alerts" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Fiyat alarmı yok" } }
-      }
-    },
-    "alerts.empty.message" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tap + to create your first price alert." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "+ ile ilk fiyat alarmını oluştur." } }
-      }
-    },
-    "alerts.create.accessibility" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Create alert" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Alarm oluştur" } }
-      }
-    },
-    "alerts.direction.above" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Above" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Üstünde" } }
-      }
-    },
-    "alerts.direction.below" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Below" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Altında" } }
-      }
-    },
-    "alerts.fired" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fired" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Tetiklendi" } }
-      }
-    },
-    "common.delete" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Sil" } }
-      }
-    },
-    "alerts.create.searchTitle" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pick a coin" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin seç" } }
-      }
-    },
-    "alerts.create.title" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "New alert" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Yeni alarm" } }
-      }
-    },
-    "alerts.create.search.prompt" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search a coin" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin ara" } }
-      }
-    },
-    "alerts.create.empty.title" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Search to add a coin" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin eklemek için ara" } }
-      }
-    },
-    "alerts.create.empty.message" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Type a coin name or symbol and press Search." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Coin adı veya sembolü yazıp Ara'ya bas." } }
-      }
-    },
-    "alerts.create.direction" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Direction" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Yön" } }
-      }
-    },
-    "alerts.create.targetPrice" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Target price" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Hedef fiyat" } }
-      }
-    },
-    "alerts.create.save" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Save" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Kaydet" } }
-      }
-    },
-    "qr.share.title" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Share QR" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "QR paylaş" } }
-      }
-    },
-    "qr.share.button" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Share" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Paylaş" } }
-      }
-    },
-    "portfolio.shareQR" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Share QR" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "QR paylaş" } }
-      }
-    },
-    "addCoin.scanQR.button" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan QR" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "QR tara" } }
-      }
-    },
-    "addCoin.scanQR.title" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Scan portfolio QR" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Portföy QR'ı tara" } }
-      }
-    },
-    "addCoin.scanQR.invalid" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Invalid QR code" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Geçersiz QR kodu" } }
-      }
-    },
-    "error.api.rateLimited" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Rate limited. Please try again in a moment." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Hız sınırına takıldık. Lütfen birazdan tekrar dene." } }
-      }
-    },
-    "error.api.networkFormat" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Network error: %@" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Ağ hatası: %@" } }
-      }
-    },
-    "error.api.serverErrorFormat" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Server error (%d)." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Sunucu hatası (%d)." } }
-      }
-    },
-    "error.api.decoding" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Could not parse server response." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Sunucu yanıtı çözümlenemedi." } }
-      }
-    },
-    "error.api.invalidURL" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Invalid request." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Geçersiz istek." } }
-      }
-    },
-    "error.generic" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Something went wrong." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Bir şeyler ters gitti." } }
-      }
-    },
-    "addCoin.error.amountNotPositive" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Amount must be greater than zero." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Miktar sıfırdan büyük olmalı." } }
-      }
-    },
-    "addCoin.error.saveFailed" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Could not save holding." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Varlık kaydedilemedi." } }
-      }
-    },
-    "createAlert.error.priceNotNumber" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Target price is not a number." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Hedef fiyat bir sayı değil." } }
-      }
-    },
-    "createAlert.error.priceNotPositive" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Target price must be greater than zero." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Hedef fiyat sıfırdan büyük olmalı." } }
-      }
-    },
-    "createAlert.error.saveFailed" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Could not save alert." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Alarm kaydedilemedi." } }
-      }
-    },
-    "coinDetail.action.addToPortfolio" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Add to portfolio" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Portföye ekle" } }
-      }
-    },
-    "coinDetail.action.watchlistAdd" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Watch" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İzle" } }
-      }
-    },
-    "coinDetail.action.watchlistRemove" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unwatch" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "İzlemeyi bırak" } }
-      }
-    },
-    "coinDetail.action.createAlert" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Create alert" } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "Alarm oluştur" } }
+  "sourceLanguage": "tr",
+  "strings": {
+    "tab.alerts": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alerts"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarmlar"
+          }
+        }
+      }
+    },
+    "tab.portfolio": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portfolio"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portföy"
+          }
+        }
+      }
+    },
+    "tab.watchlist": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Watchlist"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İzleme"
+          }
+        }
+      }
+    },
+    "common.comingSoon": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coming soon"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yakında"
+          }
+        }
+      }
+    },
+    "common.retry": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retry"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tekrar dene"
+          }
+        }
+      }
+    },
+    "portfolio.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portfolio"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portföy"
+          }
+        }
+      }
+    },
+    "portfolio.totalValue": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total value"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toplam değer"
+          }
+        }
+      }
+    },
+    "portfolio.empty.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No holdings yet"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz coin yok"
+          }
+        }
+      }
+    },
+    "portfolio.empty.message": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap + to add your first coin and start tracking your portfolio."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+ ile ilk coin'ini ekle ve portföyünü takibe başla."
+          }
+        }
+      }
+    },
+    "portfolio.holdings.section": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Holdings"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Varlıklar"
+          }
+        }
+      }
+    },
+    "portfolio.addCoin.accessibility": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add coin"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coin ekle"
+          }
+        }
+      }
+    },
+    "addCoin.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add coin"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coin ekle"
+          }
+        }
+      }
+    },
+    "addCoin.search.prompt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search a coin"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coin ara"
+          }
+        }
+      }
+    },
+    "addCoin.empty.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search to add a coin"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coin eklemek için ara"
+          }
+        }
+      }
+    },
+    "addCoin.empty.message": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Type a coin name or symbol and press Search."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coin adı veya sembolü yazıp Ara'ya bas."
+          }
+        }
+      }
+    },
+    "addCoin.amount.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amount"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Miktar"
+          }
+        }
+      }
+    },
+    "addCoin.amount.label": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amount"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Miktar"
+          }
+        }
+      }
+    },
+    "addCoin.amount.placeholder": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0.00"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0,00"
+          }
+        }
+      }
+    },
+    "addCoin.buyPrice.label": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buy price"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alış fiyatı"
+          }
+        }
+      }
+    },
+    "addCoin.buyPrice.placeholder": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0.00"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0,00"
+          }
+        }
+      }
+    },
+    "addCoin.save": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaydet"
+          }
+        }
+      }
+    },
+    "common.cancel": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İptal"
+          }
+        }
+      }
+    },
+    "priceRange.label": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Range"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aralık"
+          }
+        }
+      }
+    },
+    "priceRange.h24": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "24H"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "24S"
+          }
+        }
+      }
+    },
+    "priceRange.d7": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7D"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7G"
+          }
+        }
+      }
+    },
+    "priceRange.d30": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30D"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30G"
+          }
+        }
+      }
+    },
+    "priceRange.y1": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1Y"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1Y"
+          }
+        }
+      }
+    },
+    "coinDetail.stats.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stats"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İstatistikler"
+          }
+        }
+      }
+    },
+    "coinDetail.stats.marketCap": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Market cap"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Piyasa değeri"
+          }
+        }
+      }
+    },
+    "coinDetail.stats.high24h": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "24h high"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "24s yüksek"
+          }
+        }
+      }
+    },
+    "coinDetail.stats.low24h": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "24h low"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "24s düşük"
+          }
+        }
+      }
+    },
+    "watchlist.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Watchlist"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İzleme"
+          }
+        }
+      }
+    },
+    "watchlist.empty.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No watched coins"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İzlenen coin yok"
+          }
+        }
+      }
+    },
+    "watchlist.empty.message": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap + to search and star coins you want to follow."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+ ile takip etmek istediğin coinleri ara ve yıldızla."
+          }
+        }
+      }
+    },
+    "watchlist.addCoin.accessibility": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add coin to watchlist"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İzleme listesine coin ekle"
+          }
+        }
+      }
+    },
+    "watchlist.unwatch": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unstar"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yıldızı kaldır"
+          }
+        }
+      }
+    },
+    "watchlist.search.prompt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search a coin"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coin ara"
+          }
+        }
+      }
+    },
+    "watchlist.addCoin.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add to watchlist"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İzlemeye ekle"
+          }
+        }
+      }
+    },
+    "watchlist.add.empty.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search to add a coin"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coin eklemek için ara"
+          }
+        }
+      }
+    },
+    "watchlist.add.empty.message": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Type a coin name or symbol and press Search."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coin adı veya sembolü yazıp Ara'ya bas."
+          }
+        }
+      }
+    },
+    "alerts.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alerts"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarmlar"
+          }
+        }
+      }
+    },
+    "alerts.empty.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No price alerts"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fiyat alarmı yok"
+          }
+        }
+      }
+    },
+    "alerts.empty.message": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap + to create your first price alert."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+ ile ilk fiyat alarmını oluştur."
+          }
+        }
+      }
+    },
+    "alerts.create.accessibility": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create alert"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm oluştur"
+          }
+        }
+      }
+    },
+    "alerts.direction.above": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Above"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üstünde"
+          }
+        }
+      }
+    },
+    "alerts.direction.below": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Below"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Altında"
+          }
+        }
+      }
+    },
+    "alerts.fired": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fired"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tetiklendi"
+          }
+        }
+      }
+    },
+    "common.delete": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sil"
+          }
+        }
+      }
+    },
+    "alerts.create.searchTitle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pick a coin"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coin seç"
+          }
+        }
+      }
+    },
+    "alerts.create.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New alert"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni alarm"
+          }
+        }
+      }
+    },
+    "alerts.create.search.prompt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search a coin"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coin ara"
+          }
+        }
+      }
+    },
+    "alerts.create.empty.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search to add a coin"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coin eklemek için ara"
+          }
+        }
+      }
+    },
+    "alerts.create.empty.message": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Type a coin name or symbol and press Search."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coin adı veya sembolü yazıp Ara'ya bas."
+          }
+        }
+      }
+    },
+    "alerts.create.direction": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Direction"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yön"
+          }
+        }
+      }
+    },
+    "alerts.create.targetPrice": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target price"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hedef fiyat"
+          }
+        }
+      }
+    },
+    "alerts.create.save": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaydet"
+          }
+        }
+      }
+    },
+    "qr.share.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share QR"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR paylaş"
+          }
+        }
+      }
+    },
+    "qr.share.button": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paylaş"
+          }
+        }
+      }
+    },
+    "portfolio.shareQR": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share QR"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR paylaş"
+          }
+        }
+      }
+    },
+    "addCoin.scanQR.button": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan QR"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR tara"
+          }
+        }
+      }
+    },
+    "addCoin.scanQR.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan portfolio QR"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portföy QR'ı tara"
+          }
+        }
+      }
+    },
+    "addCoin.scanQR.invalid": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid QR code"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geçersiz QR kodu"
+          }
+        }
+      }
+    },
+    "error.api.rateLimited": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rate limited. Please try again in a moment."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hız sınırına takıldık. Lütfen birazdan tekrar dene."
+          }
+        }
+      }
+    },
+    "error.api.networkFormat": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Network error: %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ağ hatası: %@"
+          }
+        }
+      }
+    },
+    "error.api.serverErrorFormat": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server error (%d)."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunucu hatası (%d)."
+          }
+        }
+      }
+    },
+    "error.api.decoding": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not parse server response."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunucu yanıtı çözümlenemedi."
+          }
+        }
+      }
+    },
+    "error.api.invalidURL": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid request."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geçersiz istek."
+          }
+        }
+      }
+    },
+    "error.generic": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Something went wrong."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir şeyler ters gitti."
+          }
+        }
+      }
+    },
+    "addCoin.error.amountNotPositive": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amount must be greater than zero."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Miktar sıfırdan büyük olmalı."
+          }
+        }
+      }
+    },
+    "addCoin.error.saveFailed": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not save holding."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Varlık kaydedilemedi."
+          }
+        }
+      }
+    },
+    "createAlert.error.priceNotNumber": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target price is not a number."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hedef fiyat bir sayı değil."
+          }
+        }
+      }
+    },
+    "createAlert.error.priceNotPositive": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target price must be greater than zero."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hedef fiyat sıfırdan büyük olmalı."
+          }
+        }
+      }
+    },
+    "createAlert.error.saveFailed": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not save alert."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm kaydedilemedi."
+          }
+        }
+      }
+    },
+    "coinDetail.action.addToPortfolio": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add to portfolio"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portföye ekle"
+          }
+        }
+      }
+    },
+    "coinDetail.action.watchlistAdd": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Watch"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İzle"
+          }
+        }
+      }
+    },
+    "coinDetail.action.watchlistRemove": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unwatch"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İzlemeyi bırak"
+          }
+        }
+      }
+    },
+    "coinDetail.action.createAlert": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create alert"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm oluştur"
+          }
+        }
+      }
+    },
+    "alerts.create.chooserTitle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New alert"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni uyarı"
+          }
+        }
+      }
+    },
+    "alerts.type.section.coin": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Per coin"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coin başına"
+          }
+        }
+      }
+    },
+    "alerts.type.section.portfolio": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portfolio"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portföy"
+          }
+        }
+      }
+    },
+    "alerts.type.priceCrossing": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Price threshold"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fiyat eşiği"
+          }
+        }
+      }
+    },
+    "alerts.type.priceCrossing.desc": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notify when a coin price crosses a target"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir coin fiyatı hedefi geçince haber ver"
+          }
+        }
+      }
+    },
+    "alerts.type.percentChange": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Percent change"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yüzde değişimi"
+          }
+        }
+      }
+    },
+    "alerts.type.percentChange.desc": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notify on 24h / 7d / 30d moves"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "24s / 7g / 30g hareketlerde haber ver"
+          }
+        }
+      }
+    },
+    "alerts.type.portfolioValue": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portfolio value"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portföy değeri"
+          }
+        }
+      }
+    },
+    "alerts.type.portfolioValue.desc": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notify when total value crosses a target"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toplam değer hedefi geçince haber ver"
+          }
+        }
+      }
+    },
+    "alerts.type.portfolioPnLPercent": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portfolio P/L %"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portföy K/Z %"
+          }
+        }
+      }
+    },
+    "alerts.type.portfolioPnLPercent.desc": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notify when total P/L percent crosses a target"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toplam K/Z yüzdesi hedefi geçince haber ver"
+          }
+        }
+      }
+    },
+    "alerts.recurrence.oneShot": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One shot"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tek sefer"
+          }
+        }
+      }
+    },
+    "alerts.recurrence.cooldown": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cooldown"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beklemeli"
+          }
+        }
+      }
+    },
+    "alerts.recurrence.onCrossing": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On each crossing"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her geçişte"
+          }
+        }
+      }
+    },
+    "alerts.cooldown.interval": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interval"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aralık"
+          }
+        }
+      }
+    },
+    "alerts.cooldown.1h": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 hour"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 saat"
+          }
+        }
+      }
+    },
+    "alerts.cooldown.6h": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "6 hours"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "6 saat"
+          }
+        }
+      }
+    },
+    "alerts.cooldown.24h": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "24 hours"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "24 saat"
+          }
+        }
+      }
+    },
+    "alerts.window.h24": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "24h"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "24s"
+          }
+        }
+      }
+    },
+    "alerts.window.d7": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7d"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7g"
+          }
+        }
+      }
+    },
+    "alerts.window.d30": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30d"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30g"
+          }
+        }
+      }
+    },
+    "alerts.metric.value": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total value"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toplam değer"
+          }
+        }
+      }
+    },
+    "alerts.metric.pnlPercent": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "P/L percent"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "K/Z yüzde"
+          }
+        }
+      }
+    },
+    "alerts.form.direction": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Direction"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yön"
+          }
+        }
+      }
+    },
+    "alerts.form.recurrence": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recurrence"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tekrar"
+          }
+        }
+      }
+    },
+    "alerts.form.window": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Window"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pencere"
+          }
+        }
+      }
+    },
+    "alerts.form.threshold": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Threshold"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eşik"
+          }
+        }
+      }
+    },
+    "alerts.row.portfolioValue": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portfolio total"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portföy toplamı"
+          }
+        }
+      }
+    },
+    "alerts.row.portfolioPnLPercent": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portfolio P/L"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portföy K/Z"
+          }
+        }
+      }
+    },
+    "alerts.notification.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alert"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uyarı"
+          }
+        }
+      }
+    },
+    "alerts.notification.body.priceCrossing": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ crossed %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ %@ değerini geçti"
+          }
+        }
+      }
+    },
+    "alerts.notification.body.percentChange": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ crossed %@ in %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, %@ eşiğini %@ içinde geçti"
+          }
+        }
+      }
+    },
+    "alerts.notification.body.portfolioValue": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portfolio total reached %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portföy toplamı %@ değerine ulaştı"
+          }
+        }
+      }
+    },
+    "alerts.notification.body.portfolioPnLPercent": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portfolio P/L is now %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portföy K/Z şimdi %@"
+          }
+        }
+      }
+    },
+    "createAlert.error.thresholdNotNumber": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Threshold is not a number."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eşik bir sayı değil."
+          }
+        }
+      }
+    },
+    "createAlert.error.thresholdZero": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Threshold cannot be zero."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eşik sıfır olamaz."
+          }
+        }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

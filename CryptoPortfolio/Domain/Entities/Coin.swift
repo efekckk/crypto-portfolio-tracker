@@ -12,6 +12,8 @@ struct Coin: Identifiable, Equatable {
     let marketCap: Double?
     let high24h: Double?
     let low24h: Double?
+    let priceChangePercentage7d: Double?
+    let priceChangePercentage30d: Double?
 
     init(
         id: String,
@@ -22,7 +24,9 @@ struct Coin: Identifiable, Equatable {
         priceChangePercentage24h: Double = 0,
         marketCap: Double? = nil,
         high24h: Double? = nil,
-        low24h: Double? = nil
+        low24h: Double? = nil,
+        priceChangePercentage7d: Double? = nil,
+        priceChangePercentage30d: Double? = nil
     ) {
         self.id = id
         self.symbol = symbol
@@ -33,5 +37,7 @@ struct Coin: Identifiable, Equatable {
         self.marketCap = marketCap
         self.high24h = high24h
         self.low24h = low24h
+        self.priceChangePercentage7d = priceChangePercentage7d
+        self.priceChangePercentage30d = priceChangePercentage30d
     }
 }

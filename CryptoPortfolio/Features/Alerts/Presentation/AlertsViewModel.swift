@@ -9,17 +9,20 @@ final class AlertsViewModel: ObservableObject {
     private let setActiveUseCase: SetAlertActiveUseCase
     private let evaluate: EvaluateAlertsUseCase
     private let notifications: NotificationService
+    private let currency: Currency
 
     init(getAlerts: GetAlertsUseCase,
          deleteAlert: DeleteAlertUseCase,
          setActive: SetAlertActiveUseCase,
          evaluate: EvaluateAlertsUseCase,
-         notifications: NotificationService) {
+         notifications: NotificationService,
+         currency: Currency = .default) {
         self.getAlerts = getAlerts
         self.deleteAlertUseCase = deleteAlert
         self.setActiveUseCase = setActive
         self.evaluate = evaluate
         self.notifications = notifications
+        self.currency = currency
     }
 
     func load() async {
@@ -54,11 +57,12 @@ final class AlertsViewModel: ObservableObject {
         do {
             let firings = try await evaluate(now: Date())
             for firing in firings {
-                await notifications.fire(
-                    title: "Price alert",
-                    body: "\(firing.alert.coinId.capitalized) crossed \(firing.alert.targetPrice)",
-                    identifier: firing.alert.id.uuidString
-                )
+                let title = AlertNotificationFormatter.title(for: firing)
+                let body = AlertNotificationFormatter.body(for: firing,
+                                                           coinName: nil,
+                                                           currency: currency)
+                await notifications.fire(title: title, body: body,
+                                         identifier: firing.alert.id.uuidString)
             }
             if !firings.isEmpty { await load() }
         } catch {

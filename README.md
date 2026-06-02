@@ -30,6 +30,9 @@ QR share/scan for portfolio items, and tr/en localization.
 - **Alerts** — local price alerts (above/below), evaluated on view appear,
   pull-to-refresh, and via `BGTaskScheduler` background refresh
   (iOS-throttled, best-effort). Fires local `UserNotifications`.
+- **Advanced alerts (v1.1)** — price thresholds, 24h/7d/30d percent moves,
+  portfolio value, and portfolio P/L percent. Per-alert recurrence: one-shot,
+  cooldown, or on-each-crossing.
 - **Localization** — tr (Türkçe) + en. Camera permission prompt is localized.
 - **Theming** — semantic color tokens with dark/light variants.
 

@@ -66,3 +66,17 @@ AVFoundation `AVCaptureMetadataOutput`. The scanned amount pre-fills
    `CoinDetailViewModel.changeRange` cancellation, AddToWatchlist
    didChange-on-cancel, CoinDetail quick actions, docs and screenshots.
    179 tests, v1 ready.
+
+## Advanced Alerts (v1.1)
+
+Alerts are now polymorphic. `AlertCondition` has four variants
+(`priceCrossing`, `percentChange`, `portfolioValue`, `portfolioPnLPercent`) and
+each alert chooses a `Recurrence` (`oneShot`, `cooldown(seconds:)`, `onCrossing`).
+Both enums are `Codable` and persist as JSON in dedicated columns on the v2
+CDAlert schema; v1 rows decode through a legacy fallback that synthesises
+`.priceCrossing + .oneShot`. `EvaluateAlertsUseCase` consolidates a single
+markets fetch per pass, regardless of how the alert types mix, and runs the
+recurrence state machine (`shouldFire` + `lastConditionResult`) per alert.
+Notification copy lives in `AlertNotificationFormatter`. The Create-Alert flow
+opens on `AlertTypeChooserView`; the CoinDetail "Create alert" shortcut still
+jumps straight to `PriceAlertFormView`.
