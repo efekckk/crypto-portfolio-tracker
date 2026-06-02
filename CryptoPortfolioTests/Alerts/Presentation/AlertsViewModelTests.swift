@@ -16,7 +16,7 @@ final class AlertsViewModelTests: XCTestCase {
             getAlerts: GetAlertsUseCase(alertRepository: alertRepo),
             deleteAlert: DeleteAlertUseCase(alertRepository: alertRepo),
             setActive: SetAlertActiveUseCase(alertRepository: alertRepo),
-            evaluate: EvaluateAlertsUseCase(alertRepository: alertRepo, coinRepository: coinRepo, currency: .usd),
+            evaluate: EvaluateAlertsUseCase(alertRepository: alertRepo, coinRepository: coinRepo, portfolioRepository: MockPortfolioRepository(), currency: .usd),
             notifications: notifications
         )
         return (vm, alertRepo, coinRepo, notifications)

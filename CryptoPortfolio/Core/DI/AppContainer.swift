@@ -83,7 +83,12 @@ final class AppContainer {
     }
 
     func makeEvaluateAlertsUseCase(currency: Currency = .default) -> EvaluateAlertsUseCase {
-        EvaluateAlertsUseCase(alertRepository: alertRepository, coinRepository: coinRepository, currency: currency)
+        EvaluateAlertsUseCase(
+            alertRepository: alertRepository,
+            coinRepository: coinRepository,
+            portfolioRepository: portfolioRepository,
+            currency: currency
+        )
     }
 
     @MainActor

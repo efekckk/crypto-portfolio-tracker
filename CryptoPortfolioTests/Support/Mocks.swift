@@ -6,6 +6,7 @@ import Foundation
 final class MockCoinRepository: CoinRepository {
     var searchResult: [Coin] = []
     var marketsResult: [Coin] = []
+    private(set) var marketsCallCount: Int = 0
     var chartResult: [ChartPoint] = []
     var errorToThrow: Error?
     private(set) var lastSearchQuery: String?
@@ -17,6 +18,7 @@ final class MockCoinRepository: CoinRepository {
         return searchResult
     }
     func markets(ids: [String], currency: Currency) async throws -> [Coin] {
+        marketsCallCount += 1
         if let errorToThrow { throw errorToThrow }
         return marketsResult
     }
