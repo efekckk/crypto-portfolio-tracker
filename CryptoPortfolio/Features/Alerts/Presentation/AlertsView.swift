@@ -12,7 +12,8 @@ struct AlertsView: View {
             deleteAlert: container.makeDeleteAlertUseCase(),
             setActive: container.makeSetAlertActiveUseCase(),
             evaluate: container.makeEvaluateAlertsUseCase(currency: currency),
-            notifications: container.notifications
+            notifications: container.notifications,
+            currency: currency
         ))
     }
 

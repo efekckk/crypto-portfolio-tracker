@@ -54,32 +54,3 @@ extension PriceAlert {
         )
     }
 }
-
-// MARK: - Transitional accessors (removed in Task 11)
-//
-// These let v1.0 infrastructure (AlertRepositoryImpl, EvaluateAlertsUseCase,
-// AlertRow, AppContainer.evaluateAndNotify) keep compiling while we land the
-// polymorphic stack incrementally. Each one is the .priceCrossing projection;
-// for non-.priceCrossing variants they silently return sentinel values
-// ("" / 0). That's safe here because no legacy call site can reach a
-// non-.priceCrossing alert until Tasks 3-11 incrementally replace those
-// call sites with polymorphic equivalents.
-extension PriceAlert {
-    var coinId: String {
-        if case .priceCrossing(let id, _, _) = condition { return id }
-        // Portfolio variants don't have a single coinId; legacy callers
-        // shouldn't be reading this field for them.
-        return ""
-    }
-    var targetPrice: Double {
-        if case .priceCrossing(_, _, let price) = condition { return price }
-        return 0
-    }
-    var direction: AlertCondition.Direction {
-        switch condition {
-        case .priceCrossing(_, let dir, _), .percentChange(_, let dir, _, _),
-             .portfolioValue(let dir, _), .portfolioPnLPercent(let dir, _):
-            return dir
-        }
-    }
-}

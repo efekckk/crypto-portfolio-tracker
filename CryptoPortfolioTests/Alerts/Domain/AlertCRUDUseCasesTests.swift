@@ -19,7 +19,9 @@ final class AlertCRUDUseCasesTests: XCTestCase {
         try sut(coinId: "bitcoin", targetPrice: 50_000, direction: .above)
 
         XCTAssertEqual(try repo.alerts().count, 1)
-        XCTAssertEqual(try repo.alerts().first?.targetPrice, 50_000)
+        let alert = try repo.alerts().first
+        XCTAssertEqual(alert?.condition,
+                       .priceCrossing(coinId: "bitcoin", direction: .above, targetPrice: 50_000))
     }
 
     func test_createAlert_throwsOnNonPositivePrice() {

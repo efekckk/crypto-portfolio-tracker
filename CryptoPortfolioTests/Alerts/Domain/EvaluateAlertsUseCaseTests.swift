@@ -109,7 +109,11 @@ final class EvaluateAlertsUseCaseTests: XCTestCase {
         let firings = try await sut(now: frozen)
 
         XCTAssertEqual(firings.count, 1, "Only the BTC above-40k fires; ETH 4000 is not below 3000")
-        XCTAssertEqual(firings.first?.alert.coinId, "bitcoin")
+        if case .priceCrossing(let coinId, _, _) = firings.first?.alert.condition {
+            XCTAssertEqual(coinId, "bitcoin")
+        } else {
+            XCTFail("Expected priceCrossing condition")
+        }
     }
 
     func test_aboveAlertFiresAtExactTarget() async throws {

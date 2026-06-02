@@ -18,9 +18,8 @@ final class AlertRepositoryImplTests: XCTestCase {
         let stored = try sut.alerts()
 
         XCTAssertEqual(stored.count, 1)
-        XCTAssertEqual(stored.first?.coinId, "bitcoin")
-        XCTAssertEqual(stored.first?.targetPrice, 50_000)
-        XCTAssertEqual(stored.first?.direction, .above)
+        XCTAssertEqual(stored.first?.condition,
+                       .priceCrossing(coinId: "bitcoin", direction: .above, targetPrice: 50_000))
         XCTAssertTrue(stored.first?.isActive ?? false)
         XCTAssertNil(stored.first?.firedAt)
     }
@@ -34,7 +33,11 @@ final class AlertRepositoryImplTests: XCTestCase {
         let stored = try sut.alerts()
 
         XCTAssertEqual(stored.count, 1)
-        XCTAssertEqual(stored.first?.targetPrice, 60_000)
+        if case .priceCrossing(_, _, let price) = stored.first?.condition {
+            XCTAssertEqual(price, 60_000)
+        } else {
+            XCTFail("Expected priceCrossing condition")
+        }
         XCTAssertFalse(stored.first?.isActive ?? true)
     }
 
@@ -45,7 +48,9 @@ final class AlertRepositoryImplTests: XCTestCase {
 
         try sut.save(PriceAlert(id: id, coinId: "bitcoin", targetPrice: 50_000, direction: .below))
 
-        XCTAssertEqual(try sut.alert(id: id)?.targetPrice, 50_000)
+        let alert = try sut.alert(id: id)
+        XCTAssertEqual(alert?.condition,
+                       .priceCrossing(coinId: "bitcoin", direction: .below, targetPrice: 50_000))
     }
 
     func test_delete_removesAlert() throws {
@@ -57,7 +62,13 @@ final class AlertRepositoryImplTests: XCTestCase {
 
         try sut.delete(id: a.id)
 
-        XCTAssertEqual(try sut.alerts().map(\.coinId), ["ethereum"])
+        let remaining = try sut.alerts()
+        XCTAssertEqual(remaining.count, 1)
+        if case .priceCrossing(let coinId, _, _) = remaining.first?.condition {
+            XCTAssertEqual(coinId, "ethereum")
+        } else {
+            XCTFail("Expected priceCrossing condition")
+        }
     }
 
     func test_firedAt_roundtripsCorrectly() throws {
