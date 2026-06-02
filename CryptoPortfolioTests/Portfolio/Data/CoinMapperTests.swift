@@ -55,4 +55,17 @@ final class CoinMapperTests: XCTestCase {
         XCTAssertEqual(coin.high24h, 51_000)
         XCTAssertEqual(coin.low24h, 49_000)
     }
+
+    func test_marketMapping_wires7dAnd30dInto_Coin() {
+        let dto = CoinMarketDTO(
+            id: "btc", symbol: "btc", name: "Bitcoin",
+            currentPrice: 75000,
+            priceChangePercentage24h: 1.2,
+            priceChangePercentage7dInCurrency: -3.4,
+            priceChangePercentage30dInCurrency: 12.5
+        )
+        let coin = CoinMapper.map(dto)
+        XCTAssertEqual(coin.priceChangePercentage7d, -3.4)
+        XCTAssertEqual(coin.priceChangePercentage30d, 12.5)
+    }
 }

@@ -6,7 +6,7 @@ enum CoinGeckoEndpoints {
         Endpoint(path: "coins/markets", queryItems: [
             URLQueryItem(name: "vs_currency", value: vsCurrency),
             URLQueryItem(name: "ids", value: ids.joined(separator: ",")),
-            URLQueryItem(name: "price_change_percentage", value: "24h")
+            URLQueryItem(name: "price_change_percentage", value: "24h,7d,30d")
         ])
     }
 
