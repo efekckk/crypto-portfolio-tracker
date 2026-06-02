@@ -1702,13 +1702,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Price alert"
+            "value": "Alert"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Fiyat uyarısı"
+            "value": "Uyarı"
           }
         }
       }
@@ -1734,13 +1734,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ moved %@ in %@"
+            "value": "%@ crossed %@ in %@"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@, %@ %@ içinde hareket etti"
+            "value": "%@, %@ eşiğini %@ içinde geçti"
           }
         }
       }

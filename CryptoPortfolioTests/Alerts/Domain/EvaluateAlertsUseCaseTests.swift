@@ -244,6 +244,21 @@ final class EvaluateAlertsUseCaseTests: XCTestCase {
         XCTAssertEqual(firings.count, 1)
     }
 
+    func test_portfolioValue_emptyHoldings_doesNotFire() async throws {
+        // A fresh user with no holdings shouldn't get "Portfolio total
+        // reached $0" for a `.below`-direction alert.
+        let alert = PriceAlert(
+            condition: .portfolioValue(direction: .below, threshold: 100),
+            recurrence: .oneShot
+        )
+        let (useCase, repo, _, _) = evaluator(alerts: [alert], holdings: [], coins: [])
+        let firings = try await useCase()
+        XCTAssertTrue(firings.isEmpty)
+        let saved = try XCTUnwrap(try repo.alert(id: alert.id))
+        XCTAssertTrue(saved.isActive)
+        XCTAssertNil(saved.firedAt)
+    }
+
     // MARK: - Recurrence: cooldown
 
     func test_cooldown_doesNotFire_beforeIntervalElapses() async throws {

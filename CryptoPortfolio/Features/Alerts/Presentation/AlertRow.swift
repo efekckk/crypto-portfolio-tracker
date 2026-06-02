@@ -74,8 +74,7 @@ struct AlertRow: View {
         case .priceCrossing(let coinId, _, let target):
             return "\(coinId.capitalized)  \(CurrencyFormatter.format(target, currency: currency))"
         case .percentChange(let coinId, _, let window, let threshold):
-            let pct = String(format: "%@%%", "\(threshold)")
-            return "\(coinId.capitalized)  \(pct) (\(windowSuffix(window)))"
+            return "\(coinId.capitalized)  \(formatPercent(threshold)) (\(windowSuffix(window)))"
         case .portfolioValue, .portfolioPnLPercent:
             return nil
         }
@@ -103,5 +102,15 @@ struct AlertRow: View {
         case .d7:  return String(localized: "alerts.window.d7",  defaultValue: "7d")
         case .d30: return String(localized: "alerts.window.d30", defaultValue: "30d")
         }
+    }
+
+    /// Locale-aware percent formatting so "5" renders as "5%" rather than
+    /// "5.0%". Mirrors the formatter used in AlertNotificationFormatter.
+    private func formatPercent(_ value: Double) -> String {
+        let nf = NumberFormatter()
+        nf.numberStyle = .decimal
+        nf.maximumFractionDigits = 2
+        let n = nf.string(from: NSNumber(value: value)) ?? String(value)
+        return "\(n)%"
     }
 }

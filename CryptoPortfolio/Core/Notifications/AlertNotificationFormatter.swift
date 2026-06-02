@@ -6,7 +6,9 @@ import Foundation
 enum AlertNotificationFormatter {
 
     static func title(for firing: AlertFiring) -> String {
-        String(localized: "alerts.notification.title", defaultValue: "Price alert")
+        // Neutral title so portfolio-variant firings aren't mis-titled
+        // "Price alert". The body carries the variant-specific detail.
+        String(localized: "alerts.notification.title", defaultValue: "Alert")
     }
 
     static func body(for firing: AlertFiring,
@@ -23,12 +25,15 @@ enum AlertNotificationFormatter {
             )
 
         case .percentChange(let coinId, _, let window, let threshold):
+            // We don't carry the actual percent move through AlertFiring, so
+            // the body names the threshold the move crossed rather than
+            // claiming the move equals it.
             let name = coinName ?? coinId.capitalized
             let percent = Self.formatPercent(threshold)
             let windowLabel = Self.windowLabel(window)
             return String(
                 format: String(localized: "alerts.notification.body.percentChange",
-                               defaultValue: "%@ moved %@ in %@"),
+                               defaultValue: "%@ crossed %@ in %@"),
                 name, percent, windowLabel
             )
 

@@ -38,8 +38,11 @@ struct EvaluateAlertsUseCase {
         }
         let coinsById = Dictionary(coins.map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
 
-        // 3) Portfolio summary (only when needed).
-        let summary: PortfolioSummary? = needsPortfolio
+        // 3) Portfolio summary (only when needed). An empty-holdings portfolio
+        //    is treated as "no data": evaluate() will return nil for portfolio
+        //    variants, so a `.portfolioValue(.below, X)` alert doesn't spam a
+        //    fresh user with "Portfolio total reached $0" notifications.
+        let summary: PortfolioSummary? = (needsPortfolio && !holdings.isEmpty)
             ? Self.buildSummary(holdings: holdings, coinsById: coinsById)
             : nil
 
