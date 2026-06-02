@@ -67,4 +67,70 @@ final class AlertRepositoryImplTests: XCTestCase {
 
         XCTAssertEqual(try sut.alerts().first?.firedAt, firedAt)
     }
+
+    func test_save_priceCrossingOneShot_roundTrip() throws {
+        let stack = CoreDataStack(inMemory: true)
+        let repo = AlertRepositoryImpl(stack: stack)
+        let alert = PriceAlert(coinId: "bitcoin", targetPrice: 75000, direction: .above)
+        try repo.save(alert)
+        let loaded = try XCTUnwrap(try repo.alert(id: alert.id))
+        XCTAssertEqual(loaded.condition,
+                       .priceCrossing(coinId: "bitcoin", direction: .above, targetPrice: 75000))
+        XCTAssertEqual(loaded.recurrence, .oneShot)
+        XCTAssertNil(loaded.lastConditionResult)
+    }
+
+    func test_save_percentChange_cooldown_roundTrip() throws {
+        let stack = CoreDataStack(inMemory: true)
+        let repo = AlertRepositoryImpl(stack: stack)
+        let alert = PriceAlert(
+            condition: .percentChange(coinId: "ethereum", direction: .below, window: .d7, threshold: -5),
+            recurrence: .cooldown(seconds: 3600)
+        )
+        try repo.save(alert)
+        let loaded = try XCTUnwrap(try repo.alert(id: alert.id))
+        XCTAssertEqual(loaded.condition,
+                       .percentChange(coinId: "ethereum", direction: .below, window: .d7, threshold: -5))
+        XCTAssertEqual(loaded.recurrence, .cooldown(seconds: 3600))
+    }
+
+    func test_save_portfolioValue_onCrossing_roundTrip_preservesLastResult() throws {
+        let stack = CoreDataStack(inMemory: true)
+        let repo = AlertRepositoryImpl(stack: stack)
+        let alert = PriceAlert(
+            condition: .portfolioValue(direction: .above, threshold: 100_000),
+            recurrence: .onCrossing,
+            lastConditionResult: true
+        )
+        try repo.save(alert)
+        let loaded = try XCTUnwrap(try repo.alert(id: alert.id))
+        XCTAssertEqual(loaded.condition, .portfolioValue(direction: .above, threshold: 100_000))
+        XCTAssertEqual(loaded.recurrence, .onCrossing)
+        XCTAssertEqual(loaded.lastConditionResult, true)
+    }
+
+    func test_legacyRow_withoutConditionJSON_decodesAsPriceCrossingOneShot() throws {
+        // Simulate a v1.0 row by writing the legacy columns directly via Core Data
+        // and leaving conditionJSON / recurrenceJSON nil.
+        let stack = CoreDataStack(inMemory: true)
+        let context = stack.viewContext
+        let entity = CDAlert(context: context)
+        let id = UUID()
+        entity.id = id
+        entity.coinId = "bitcoin"
+        entity.targetPrice = 60000
+        entity.direction = "below"
+        entity.isActive = true
+        entity.firedAt = nil
+        entity.conditionJSON = nil
+        entity.recurrenceJSON = nil
+        entity.lastConditionResult = nil
+        try context.save()
+
+        let repo = AlertRepositoryImpl(stack: stack)
+        let loaded = try XCTUnwrap(try repo.alert(id: id))
+        XCTAssertEqual(loaded.condition,
+                       .priceCrossing(coinId: "bitcoin", direction: .below, targetPrice: 60000))
+        XCTAssertEqual(loaded.recurrence, .oneShot)
+    }
 }
