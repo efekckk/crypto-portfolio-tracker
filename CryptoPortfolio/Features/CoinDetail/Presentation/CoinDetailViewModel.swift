@@ -56,8 +56,12 @@ final class CoinDetailViewModel: ObservableObject {
         chartState = .loading
         do {
             let points = try await getCoinChart(coinId: coinId, range: selectedRange, currency: currency)
+            // Don't apply stale results: if a newer changeRange call cancelled this
+            // task, drop our write so the latest range wins deterministically.
+            guard !Task.isCancelled else { return }
             chartState = .loaded(points)
         } catch {
+            guard !Task.isCancelled else { return }
             chartState = .error(error.userFacingMessage)
         }
     }
