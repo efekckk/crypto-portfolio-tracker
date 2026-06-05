@@ -362,4 +362,70 @@ final class EvaluateAlertsUseCaseTests: XCTestCase {
         _ = try await useCase()
         XCTAssertEqual(coinRepo.marketsCallCount, 1)
     }
+
+    // MARK: - Firing detail: actualValue + coinName
+
+    func test_priceCrossing_firing_carriesCurrentPrice_andCoinName() async throws {
+        let alert = PriceAlert(coinId: "btc", targetPrice: 75000, direction: .above)
+        let (useCase, _, _, _) = evaluator(
+            alerts: [alert],
+            coins: [Coin(id: "btc", symbol: "btc", name: "Bitcoin",
+                         currentPrice: 80000, priceChangePercentage24h: 0)]
+        )
+        let firings = try await useCase()
+        let firing = try XCTUnwrap(firings.first)
+        XCTAssertEqual(firing.actualValue, 80000)
+        XCTAssertEqual(firing.coinName, "Bitcoin")
+    }
+
+    func test_percentChange_firing_carriesMeasuredPercent_andCoinName() async throws {
+        let alert = PriceAlert(
+            condition: .percentChange(coinId: "eth", direction: .above, window: .h24, threshold: 5),
+            recurrence: .oneShot
+        )
+        let (useCase, _, _, _) = evaluator(
+            alerts: [alert],
+            coins: [Coin(id: "eth", symbol: "eth", name: "Ethereum",
+                         currentPrice: 0, priceChangePercentage24h: 8.2)]
+        )
+        let firings = try await useCase()
+        let firing = try XCTUnwrap(firings.first)
+        XCTAssertEqual(firing.actualValue, 8.2)
+        XCTAssertEqual(firing.coinName, "Ethereum")
+    }
+
+    func test_portfolioValue_firing_carriesTotalValue_andNoCoinName() async throws {
+        let alert = PriceAlert(
+            condition: .portfolioValue(direction: .above, threshold: 100_000),
+            recurrence: .oneShot
+        )
+        let holding = Holding(coinId: "btc", amount: 2, averageBuyPrice: 30000)
+        let (useCase, _, _, _) = evaluator(
+            alerts: [alert],
+            holdings: [holding],
+            coins: [coin("btc", price: 60000)]
+        )
+        let firings = try await useCase()
+        let firing = try XCTUnwrap(firings.first)
+        XCTAssertEqual(firing.actualValue, 120_000)
+        XCTAssertNil(firing.coinName)
+    }
+
+    func test_portfolioPnLPercent_firing_carriesMeasuredPnL_andNoCoinName() async throws {
+        let alert = PriceAlert(
+            condition: .portfolioPnLPercent(direction: .below, threshold: -10),
+            recurrence: .oneShot
+        )
+        let holding = Holding(coinId: "btc", amount: 1, averageBuyPrice: 100)
+        let (useCase, _, _, _) = evaluator(
+            alerts: [alert],
+            holdings: [holding],
+            coins: [coin("btc", price: 80)]
+        )
+        let firings = try await useCase()
+        let firing = try XCTUnwrap(firings.first)
+        // Bought 1 @100, now worth 80 → P/L = -20%
+        XCTAssertEqual(firing.actualValue ?? 0, -20, accuracy: 0.0001)
+        XCTAssertNil(firing.coinName)
+    }
 }

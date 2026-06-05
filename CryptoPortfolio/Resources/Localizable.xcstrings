@@ -1808,6 +1808,38 @@
           }
         }
       }
+    },
+    "alerts.notification.body.priceCrossing.withActual": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ reached %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ %@ değerine ulaştı"
+          }
+        }
+      }
+    },
+    "alerts.notification.body.percentChange.withActual": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ moved %@ in %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, %@ %@ içinde hareket etti"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

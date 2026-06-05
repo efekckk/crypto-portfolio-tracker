@@ -97,12 +97,9 @@ final class AppContainer {
         do {
             let firings = try await makeEvaluateAlertsUseCase(currency: currency)(now: Date())
             for firing in firings {
-                let coinName = Self.resolveCoinName(for: firing.alert.condition)
                 await notifications.fire(
                     title: AlertNotificationFormatter.title(for: firing),
-                    body: AlertNotificationFormatter.body(for: firing,
-                                                         coinName: coinName,
-                                                         currency: currency),
+                    body: AlertNotificationFormatter.body(for: firing, currency: currency),
                     identifier: firing.alert.id.uuidString
                 )
             }
@@ -110,17 +107,6 @@ final class AppContainer {
         } catch {
             return 0
         }
-    }
-
-    /// Resolves a presentable coin name from the condition. The evaluator already
-    /// fetched the market data; we recover the name by re-asking the cached
-    /// markets path. If the lookup fails, we hand `nil` to the formatter and it
-    /// falls back to a capitalised coin id.
-    private static func resolveCoinName(for condition: AlertCondition) -> String? {
-        // The condition carries the coin id; nothing else here. The formatter
-        // capitalises the id as a graceful fallback, which is enough for v1.1.
-        // (We deliberately don't add a name cache yet — YAGNI.)
-        nil
     }
 }
 

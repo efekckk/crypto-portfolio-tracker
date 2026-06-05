@@ -3,13 +3,14 @@ import BackgroundTasks
 
 @main
 struct CryptoPortfolioApp: App {
-    @State private var container = AppContainer(notifications: UserNotificationsService())
+    private let container = AppContainer(notifications: UserNotificationsService())
 
     private static let bgTaskIdentifier = "com.foneria.cryptoportfolio.alerts.refresh"
 
     init() {
+        let container = self.container
         BGTaskScheduler.shared.register(forTaskWithIdentifier: Self.bgTaskIdentifier, using: nil) { task in
-            Self.handle(task: task as! BGAppRefreshTask)
+            Self.handle(task: task as! BGAppRefreshTask, container: container)
         }
     }
 
@@ -30,9 +31,8 @@ struct CryptoPortfolioApp: App {
     }
 
     @MainActor
-    private static func handle(task: BGAppRefreshTask) {
+    private static func handle(task: BGAppRefreshTask, container: AppContainer) {
         scheduleNextBGRefresh()
-        let container = AppContainer(notifications: UserNotificationsService())
         let workItem = Task {
             _ = await container.evaluateAndNotify(currency: .default)
             task.setTaskCompleted(success: true)

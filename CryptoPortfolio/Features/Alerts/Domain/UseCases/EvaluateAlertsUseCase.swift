@@ -53,11 +53,12 @@ struct EvaluateAlertsUseCase {
         //    their pre-loop state — acceptable for best-effort notification.
         var firings: [AlertFiring] = []
         for alert in active {
-            guard let conditionTrue = evaluate(alert.condition,
-                                               coinsById: coinsById,
-                                               summary: summary) else {
+            guard let result = evaluate(alert.condition,
+                                        coinsById: coinsById,
+                                        summary: summary) else {
                 continue
             }
+            let (conditionTrue, actualValue) = result
             var updated = alert
             if case .onCrossing = alert.recurrence {
                 updated.lastConditionResult = conditionTrue
@@ -65,7 +66,11 @@ struct EvaluateAlertsUseCase {
             if shouldFire(alert, conditionTrue: conditionTrue, now: now) {
                 updated.firedAt = now
                 if case .oneShot = alert.recurrence { updated.isActive = false }
-                firings.append(AlertFiring(alert: updated, firedAt: now))
+                let coinName = Self.coinName(for: alert.condition, coinsById: coinsById)
+                firings.append(AlertFiring(alert: updated,
+                                           firedAt: now,
+                                           actualValue: actualValue,
+                                           coinName: coinName))
             }
             if updated != alert {
                 try alertRepository.save(updated)
@@ -76,15 +81,21 @@ struct EvaluateAlertsUseCase {
 
     // MARK: - Per-variant evaluation
 
+    /// Returns `(conditionTrue, actualValue)` or nil if required data is
+    /// missing. `actualValue` is the measured number — current price, percent
+    /// change, portfolio total, or P/L percent — that the threshold was
+    /// compared against. Carrying it out lets notification copy reference
+    /// what actually happened, not just the threshold that was crossed.
     private func evaluate(_ condition: AlertCondition,
                           coinsById: [String: Coin],
-                          summary: PortfolioSummary?) -> Bool? {
+                          summary: PortfolioSummary?) -> (Bool, Double?)? {
         switch condition {
         case .priceCrossing(let coinId, let direction, let target):
             guard let coin = coinsById[coinId] else { return nil }
+            let measured = coin.currentPrice
             switch direction {
-            case .above: return coin.currentPrice >= target
-            case .below: return coin.currentPrice <= target
+            case .above: return (measured >= target, measured)
+            case .below: return (measured <= target, measured)
             }
         case .percentChange(let coinId, let direction, let window, let threshold):
             guard let coin = coinsById[coinId] else { return nil }
@@ -94,23 +105,38 @@ struct EvaluateAlertsUseCase {
             case .d7:  value = coin.priceChangePercentage7d
             case .d30: value = coin.priceChangePercentage30d
             }
-            guard let v = value else { return nil }
+            guard let measured = value else { return nil }
             switch direction {
-            case .above: return v >= threshold
-            case .below: return v <= threshold
+            case .above: return (measured >= threshold, measured)
+            case .below: return (measured <= threshold, measured)
             }
         case .portfolioValue(let direction, let threshold):
             guard let summary else { return nil }
+            let measured = summary.totalValue
             switch direction {
-            case .above: return summary.totalValue >= threshold
-            case .below: return summary.totalValue <= threshold
+            case .above: return (measured >= threshold, measured)
+            case .below: return (measured <= threshold, measured)
             }
         case .portfolioPnLPercent(let direction, let threshold):
             guard let summary else { return nil }
+            let measured = summary.percentPnL
             switch direction {
-            case .above: return summary.percentPnL >= threshold
-            case .below: return summary.percentPnL <= threshold
+            case .above: return (measured >= threshold, measured)
+            case .below: return (measured <= threshold, measured)
             }
+        }
+    }
+
+    /// Looks up a presentable coin name for coin-bound condition variants.
+    /// Returns nil for portfolio variants or when the coin id isn't in the
+    /// markets response (graceful fallback handled downstream).
+    private static func coinName(for condition: AlertCondition,
+                                 coinsById: [String: Coin]) -> String? {
+        switch condition {
+        case .priceCrossing(let id, _, _), .percentChange(let id, _, _, _):
+            return coinsById[id]?.name
+        case .portfolioValue, .portfolioPnLPercent:
+            return nil
         }
     }
 
