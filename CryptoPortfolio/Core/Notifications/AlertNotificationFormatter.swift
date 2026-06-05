@@ -1,8 +1,9 @@
 import Foundation
 
 /// Single source of truth for the title/body strings shown to the user when
-/// an alert fires. Used by both `AppContainer.evaluateAndNotify` (foreground +
-/// BGTask path) and any in-app surfaces that want to echo the same wording.
+/// an alert fires. Uses the measured value carried on `AlertFiring` when
+/// available so the body reports what actually happened, not just the
+/// threshold that was crossed.
 enum AlertNotificationFormatter {
 
     static func title(for firing: AlertFiring) -> String {
@@ -11,46 +12,54 @@ enum AlertNotificationFormatter {
         String(localized: "alerts.notification.title", defaultValue: "Alert")
     }
 
-    static func body(for firing: AlertFiring,
-                     coinName: String?,
-                     currency: Currency) -> String {
+    static func body(for firing: AlertFiring, currency: Currency) -> String {
         switch firing.alert.condition {
         case .priceCrossing(let coinId, _, let targetPrice):
-            let name = coinName ?? coinId.capitalized
-            let price = CurrencyFormatter.format(targetPrice, currency: currency)
+            let name = firing.coinName ?? coinId.capitalized
+            if let measured = firing.actualValue {
+                return String(
+                    format: String(localized: "alerts.notification.body.priceCrossing.withActual",
+                                   defaultValue: "%@ reached %@"),
+                    name, CurrencyFormatter.format(measured, currency: currency)
+                )
+            }
             return String(
                 format: String(localized: "alerts.notification.body.priceCrossing",
                                defaultValue: "%@ crossed %@"),
-                name, price
+                name, CurrencyFormatter.format(targetPrice, currency: currency)
             )
 
         case .percentChange(let coinId, _, let window, let threshold):
-            // We don't carry the actual percent move through AlertFiring, so
-            // the body names the threshold the move crossed rather than
-            // claiming the move equals it.
-            let name = coinName ?? coinId.capitalized
-            let percent = Self.formatPercent(threshold)
+            let name = firing.coinName ?? coinId.capitalized
             let windowLabel = Self.windowLabel(window)
+            if let measured = firing.actualValue {
+                return String(
+                    format: String(localized: "alerts.notification.body.percentChange.withActual",
+                                   defaultValue: "%@ moved %@ in %@"),
+                    name, Self.formatPercent(measured), windowLabel
+                )
+            }
             return String(
                 format: String(localized: "alerts.notification.body.percentChange",
                                defaultValue: "%@ crossed %@ in %@"),
-                name, percent, windowLabel
+                name, Self.formatPercent(threshold), windowLabel
             )
 
         case .portfolioValue(_, let threshold):
-            let amount = CurrencyFormatter.format(threshold, currency: currency)
+            // Same template either way; just pass actual or threshold.
+            let amount = firing.actualValue ?? threshold
             return String(
                 format: String(localized: "alerts.notification.body.portfolioValue",
                                defaultValue: "Portfolio total reached %@"),
-                amount
+                CurrencyFormatter.format(amount, currency: currency)
             )
 
         case .portfolioPnLPercent(_, let threshold):
-            let percent = Self.formatPercent(threshold)
+            let percent = firing.actualValue ?? threshold
             return String(
                 format: String(localized: "alerts.notification.body.portfolioPnLPercent",
                                defaultValue: "Portfolio P/L is now %@"),
-                percent
+                Self.formatPercent(percent)
             )
         }
     }

@@ -58,9 +58,7 @@ final class AlertsViewModel: ObservableObject {
             let firings = try await evaluate(now: Date())
             for firing in firings {
                 let title = AlertNotificationFormatter.title(for: firing)
-                let body = AlertNotificationFormatter.body(for: firing,
-                                                           coinName: nil,
-                                                           currency: currency)
+                let body = AlertNotificationFormatter.body(for: firing, currency: currency)
                 await notifications.fire(title: title, body: body,
                                          identifier: firing.alert.id.uuidString)
             }
