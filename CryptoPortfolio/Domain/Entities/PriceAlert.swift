@@ -34,8 +34,9 @@ extension PriceAlert {
     /// Alias kept for backward compatibility with v1.0 call sites and tests.
     typealias Direction = AlertCondition.Direction
 
-    /// Legacy convenience init — synthesises `.priceCrossing + .oneShot`.
-    /// Required so the 154 v1.0 tests continue to compile and pass unchanged.
+    /// Convenience init that synthesises a `.priceCrossing + .oneShot` alert
+    /// from the older flat parameter shape — kept so callers that pre-date
+    /// the polymorphic `AlertCondition` keep compiling.
     init(
         id: UUID = UUID(),
         coinId: String,

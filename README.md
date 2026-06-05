@@ -1,8 +1,9 @@
 # Crypto Portfolio Tracker — iOS
 
-Native SwiftUI crypto portfolio tracker built with Clean Architecture and MVVM. v1
-ships Portfolio, Watchlist, CoinDetail (with Swift Charts), local price Alerts,
-QR share/scan for portfolio items, and tr/en localization.
+Native SwiftUI crypto portfolio tracker built with Clean Architecture and MVVM.
+Portfolio, Watchlist, CoinDetail (with Swift Charts), local price alerts with
+recurring/percent/portfolio variants, QR share/scan for portfolio items, and
+tr/en localization.
 
 ## Requirements
 - Xcode 15+ (Swift 5.9+ toolchain), iOS 16+ simulator
@@ -18,7 +19,7 @@ QR share/scan for portfolio items, and tr/en localization.
     xcodebuild -project CryptoPortfolio.xcodeproj -scheme CryptoPortfolio \
       -destination 'platform=iOS Simulator,name=iPhone 17' test
 
-## Features (v1)
+## Features
 
 - **Portfolio** — add holdings (manual search or QR scan), see live value + P/L
   in your display currency. Pull-to-refresh, swipe-to-delete. Long-press a row
@@ -27,21 +28,18 @@ QR share/scan for portfolio items, and tr/en localization.
 - **CoinDetail** — Swift Charts line chart with 24h/7d/30d/1y ranges, market cap,
   24h high/low, and quick actions: add to portfolio, toggle watchlist, create
   alert.
-- **Alerts** — local price alerts (above/below), evaluated on view appear,
-  pull-to-refresh, and via `BGTaskScheduler` background refresh
-  (iOS-throttled, best-effort). Fires local `UserNotifications`.
-- **Advanced alerts (v1.1)** — price thresholds, 24h/7d/30d percent moves,
-  portfolio value, and portfolio P/L percent. Per-alert recurrence: one-shot,
-  cooldown, or on-each-crossing.
+- **Alerts** — price threshold, 24h/7d/30d percent move, portfolio value, and
+  portfolio P/L percent. Per-alert recurrence: one-shot, cooldown, or
+  on-each-crossing. Evaluated on view appear, pull-to-refresh, and via
+  `BGTaskScheduler` background refresh (iOS-throttled, best-effort). Fires
+  local `UserNotifications`.
 - **Localization** — tr (Türkçe) + en. Camera permission prompt is localized.
 - **Theming** — semantic color tokens with dark/light variants.
-
-## Architecture
-See `docs/architecture.md` for the layer overview, dependency direction, and the
-phase-by-phase build history.
 
 ## Notes
 - Price alerts are local and best-effort; a real-time push pipeline is a future
   backend project.
 - The free CoinGecko tier has a low rate limit. The app respects it via a
   client-side token-bucket `RateLimiter`.
+</content>
+</invoke>
