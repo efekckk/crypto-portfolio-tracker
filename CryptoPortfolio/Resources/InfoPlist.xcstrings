@@ -1,12 +1,22 @@
 {
-  "sourceLanguage" : "tr",
-  "strings" : {
-    "NSCameraUsageDescription" : {
-      "localizations" : {
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Camera access is needed to scan a QR code." } },
-        "tr" : { "stringUnit" : { "state" : "translated", "value" : "QR kodu taramak için kameraya erişim gerekir." } }
+  "sourceLanguage": "en",
+  "strings": {
+    "NSCameraUsageDescription": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera access is needed to scan a QR code."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR kodu taramak için kameraya erişim gerekir."
+          }
+        }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

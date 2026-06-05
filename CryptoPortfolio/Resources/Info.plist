@@ -17,7 +17,7 @@
     <key>CFBundleDisplayName</key>
     <string>Crypto Portfolio</string>
     <key>CFBundleDevelopmentRegion</key>
-    <string>tr</string>
+    <string>en</string>
     <key>CFBundleLocalizations</key>
     <array>
         <string>tr</string>
@@ -26,7 +26,7 @@
     <key>COINGECKO_API_KEY</key>
     <string>$(COINGECKO_API_KEY)</string>
     <key>NSCameraUsageDescription</key>
-    <string>QR kodu taramak için kameraya erişim gerekir.</string>
+    <string>Camera access is needed to scan a QR code.</string>
     <key>UILaunchScreen</key>
     <dict/>
     <key>UISupportedInterfaceOrientations</key>
