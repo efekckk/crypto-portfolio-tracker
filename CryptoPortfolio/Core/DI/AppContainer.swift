@@ -27,6 +27,27 @@ final class AppContainer {
     }
     // MARK: - Repositories (lazy, share the container's infrastructure)
 
+    internal(set) lazy var virtualPortfolioAPI: VirtualPortfolioAPI = {
+        let urlString = (Bundle.main.object(forInfoDictionaryKey: "BACKEND_API_URL") as? String) ?? "http://localhost:8080"
+        let baseURL = URL(string: urlString) ?? URL(string: "http://localhost:8080")!
+        return URLSessionVirtualPortfolioAPI(
+            baseURL: baseURL,
+            session: .shared,
+            deviceIDProvider: { Self.persistedDeviceID() }
+        )
+    }()
+
+    private static func persistedDeviceID() -> UUID? {
+        let key = "deviceID"
+        let defaults = UserDefaults.standard
+        if let raw = defaults.string(forKey: key), let id = UUID(uuidString: raw) {
+            return id
+        }
+        let new = UUID()
+        defaults.set(new.uuidString, forKey: key)
+        return new
+    }
+
     internal(set) lazy var coinRepository: CoinRepository = CoinRepositoryImpl(httpClient: httpClient)
     private(set) lazy var portfolioRepository: PortfolioRepository = PortfolioRepositoryImpl(stack: coreDataStack)
     private(set) lazy var watchlistRepository: WatchlistRepository = WatchlistRepositoryImpl(stack: coreDataStack)

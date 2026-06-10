@@ -25,6 +25,8 @@
     </array>
     <key>COINGECKO_API_KEY</key>
     <string>$(COINGECKO_API_KEY)</string>
+    <key>BACKEND_API_URL</key>
+    <string>$(BACKEND_API_URL)</string>
     <key>NSCameraUsageDescription</key>
     <string>Camera access is needed to scan a QR code.</string>
     <key>UILaunchScreen</key>

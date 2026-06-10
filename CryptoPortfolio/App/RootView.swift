@@ -13,6 +13,9 @@ struct RootView: View {
 
             AlertsView(container: container)
                 .tabItem { Label("tab.alerts", systemImage: "bell.fill") }
+
+            VirtualPortfoliosListView(api: container.virtualPortfolioAPI, container: container)
+                .tabItem { Label("tab.virtual", systemImage: "chart.line.uptrend.xyaxis") }
         }
     }
 }

@@ -1840,6 +1840,758 @@
           }
         }
       }
+    },
+    "tab.virtual": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Virtual"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sanal"
+          }
+        }
+      }
+    },
+    "virtual.list.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Virtual Portfolios"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sanal Portföyler"
+          }
+        }
+      }
+    },
+    "virtual.list.empty.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No virtual portfolios yet"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz sanal portföy yok"
+          }
+        }
+      }
+    },
+    "virtual.list.empty.message": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create one to start paper trading."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kağıt üzerinde işlem yapmaya başlamak için bir portföy oluştur."
+          }
+        }
+      }
+    },
+    "virtual.list.error.retry": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retry"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tekrar dene"
+          }
+        }
+      }
+    },
+    "virtual.detail.section.holdings": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Holdings"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pozisyonlar"
+          }
+        }
+      }
+    },
+    "virtual.detail.empty.holdings": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No positions yet"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz pozisyon yok"
+          }
+        }
+      }
+    },
+    "virtual.detail.metric.cash": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cash"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nakit"
+          }
+        }
+      }
+    },
+    "virtual.detail.metric.startingBalance": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starting balance"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başlangıç bakiyesi"
+          }
+        }
+      }
+    },
+    "virtual.detail.metric.realized": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Realized P/L"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gerçekleşen K/Z"
+          }
+        }
+      }
+    },
+    "virtual.detail.metric.unrealized": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unrealized P/L"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gerçekleşmemiş K/Z"
+          }
+        }
+      }
+    },
+    "virtual.detail.action.tradeHistory": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trade history"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İşlem geçmişi"
+          }
+        }
+      }
+    },
+    "virtual.detail.action.trade": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trade"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İşlem yap"
+          }
+        }
+      }
+    },
+    "virtual.detail.action.delete": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete portfolio"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portföyü sil"
+          }
+        }
+      }
+    },
+    "virtual.detail.delete.confirm.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete this portfolio?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu portföy silinsin mi?"
+          }
+        }
+      }
+    },
+    "virtual.detail.delete.confirm.message": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All trades and history will be removed."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tüm işlemler ve geçmiş silinecek."
+          }
+        }
+      }
+    },
+    "virtual.trade.title.buy": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buy"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Al"
+          }
+        }
+      }
+    },
+    "virtual.trade.title.sell": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sell"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sat"
+          }
+        }
+      }
+    },
+    "virtual.trade.field.amount": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amount"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Miktar"
+          }
+        }
+      }
+    },
+    "virtual.trade.button.max": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Max"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maks"
+          }
+        }
+      }
+    },
+    "virtual.trade.label.total": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toplam"
+          }
+        }
+      }
+    },
+    "virtual.trade.label.price": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Price"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fiyat"
+          }
+        }
+      }
+    },
+    "virtual.trade.button.confirm": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confirm trade"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İşlemi onayla"
+          }
+        }
+      }
+    },
+    "virtual.trade.error.invalid_amount": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a positive amount."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pozitif bir miktar gir."
+          }
+        }
+      }
+    },
+    "virtual.trade.error.insufficient_cash": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not enough cash for this trade."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu işlem için yeterli nakit yok."
+          }
+        }
+      }
+    },
+    "virtual.trade.error.insufficient_holdings": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not enough holdings to sell."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Satmak için yeterli pozisyon yok."
+          }
+        }
+      }
+    },
+    "virtual.new.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New portfolio"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni portföy"
+          }
+        }
+      }
+    },
+    "virtual.new.field.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İsim"
+          }
+        }
+      }
+    },
+    "virtual.new.field.startingBalance": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starting balance"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başlangıç bakiyesi"
+          }
+        }
+      }
+    },
+    "virtual.new.preset.custom": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Custom"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Özel"
+          }
+        }
+      }
+    },
+    "virtual.new.button.save": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oluştur"
+          }
+        }
+      }
+    },
+    "virtual.new.error.invalid_name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name must be 1–50 characters."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İsim 1–50 karakter olmalı."
+          }
+        }
+      }
+    },
+    "virtual.new.error.invalid_balance": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a positive starting balance."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pozitif bir başlangıç bakiyesi gir."
+          }
+        }
+      }
+    },
+    "virtual.new.error.name_taken": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A portfolio with this name already exists."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu isimde bir portföy zaten var."
+          }
+        }
+      }
+    },
+    "virtual.history.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trade history"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İşlem geçmişi"
+          }
+        }
+      }
+    },
+    "virtual.history.empty.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No trades yet"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz işlem yok"
+          }
+        }
+      }
+    },
+    "virtual.history.empty.message": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trades you make will appear here."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yaptığın işlemler burada görünecek."
+          }
+        }
+      }
+    },
+    "virtual.history.side.buy": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BUY"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AL"
+          }
+        }
+      }
+    },
+    "virtual.history.side.sell": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SELL"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SAT"
+          }
+        }
+      }
+    },
+    "virtual.error.deviceUnknown": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Device not registered. Please restart the app."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cihaz kayıtlı değil. Lütfen uygulamayı yeniden başlat."
+          }
+        }
+      }
+    },
+    "virtual.error.forbidden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You don't have access to this portfolio."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu portföye erişimin yok."
+          }
+        }
+      }
+    },
+    "virtual.error.notFound": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portfolio not found."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portföy bulunamadı."
+          }
+        }
+      }
+    },
+    "virtual.error.rateLimited": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too many trades. Slow down a bit."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çok fazla işlem. Biraz yavaşla."
+          }
+        }
+      }
+    },
+    "virtual.error.upstream": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Market data is temporarily unavailable."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Piyasa verileri geçici olarak kullanılamıyor."
+          }
+        }
+      }
+    },
+    "virtual.error.server": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server error. Please try again."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunucu hatası. Tekrar dene."
+          }
+        }
+      }
+    },
+    "virtual.error.transport": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Network error. Check your connection."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ağ hatası. Bağlantını kontrol et."
+          }
+        }
+      }
+    },
+    "virtual.error.unknown": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Something went wrong."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir şeyler ters gitti."
+          }
+        }
+      }
     }
   },
   "version": "1.0"
